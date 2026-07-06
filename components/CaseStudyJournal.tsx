@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Calendar, User, Sparkles } from "lucide-react";
+import { ArrowUpRight, Calendar, User, Sparkles, Terminal } from "lucide-react";
 import { featuredWork, ProjectCard } from "@/data/caseStudies";
 
 export default function CaseStudyJournal() {
@@ -11,13 +11,10 @@ export default function CaseStudyJournal() {
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
-      
-      // Compute raw numeric metrics directly to avoid triggering React component state renders
       const currentScroll = window.scrollY;
       containerRef.current.style.setProperty("--scroll-y", `${currentScroll}`);
     };
 
-    // Initialize tracking cleanly
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,47 +22,48 @@ export default function CaseStudyJournal() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full bg-[#f8fafc] text-slate-900 py-24 overflow-hidden border-t border-slate-200/60"
-      style={{
-        // Set fallback variables for SSR matching seamlessly
-        "--scroll-y": "0"
-      } as React.CSSProperties}
+      className="relative w-full bg-[#f8fafc] text-slate-900 py-24 lg:py-32 overflow-hidden border-t border-slate-200"
+      style={{ "--scroll-y": "0" } as React.CSSProperties}
     >
       
-      {/* =========================================================================
-          HIGH-PERFORMANCE INLINE CSS PARALLAX FIELDS (Zero Hydration Mismatch Risk)
-          ========================================================================= */}
+      {/* Hydration-Safe Light Technical Ambient Glow Fields */}
       <div 
-        className="absolute top-[15%] right-[-5%] w-[450px] h-[450px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none will-change-transform"
-        style={{ transform: "translate3d(0, calc(var(--scroll-y) * 0.08px), 0)" }}
+        className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[130px] pointer-events-none will-change-transform"
+        style={{ transform: "translate3d(0, calc(var(--scroll-y) * 0.06px), 0)" }}
       />
       <div 
-        className="absolute bottom-[10%] left-[-8%] w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[130px] pointer-events-none will-change-transform"
-        style={{ transform: "translate3d(0, calc(var(--scroll-y) * -0.05px), 0)" }}
+        className="absolute bottom-[5%] left-[-5%] w-[450px] h-[450px] bg-indigo-500/[0.04] rounded-full blur-[120px] pointer-events-none will-change-transform"
+        style={{ transform: "translate3d(0, calc(var(--scroll-y) * -0.04px), 0)" }}
       />
+
+      {/* Blueprint Structural Mesh Screen */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a02_1px,transparent_1px),linear-gradient(to_bottom,#0f172a02_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full z-10">
         
-        {/* Section Heading matching structure of image_81068e.jpg */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm">
+        {/* Section Heading Setup */}
+        <div className="text-left max-w-3xl space-y-4 mb-20">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white border border-slate-200 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-blue-600" />
             <span className="text-[10px] font-black uppercase tracking-widest text-slate-600">
-              Deterministic Engineering Impact
+              Technical Case Studies
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950">
-            The Studio Journal
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-tight">
+            Proven Solutions for <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              Complex Architecture Systems.
+            </span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto">
-            A production briefing tracker showcasing how our specialized cross-platform solutions accelerate growth profiles and secure business processes for international users.
+          <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed max-w-2xl">
+            A granular review of how we optimize machine learning infrastructure, clean up unstructured datasets via vision pipelines, and lock down global data networks.
           </p>
         </div>
 
-        {/* Card Presentation Matrix */}
+        {/* Responsive Layout Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          {featuredWork.map((project: ProjectCard, idx: number) => (
-            <ParallaxCard key={`${project.id}-${idx}`} project={project} />
+          {featuredWork.map((project: ProjectCard) => (
+            <ParallaxCard key={project.id} project={project} />
           ))}
         </div>
 
@@ -74,7 +72,7 @@ export default function CaseStudyJournal() {
   );
 }
 
-// Sub-Component: 3D Mouse Parallax Hover Projection Element (From image_81068e.jpg)
+// Sub-Component: 3D Mouse Parallax Hover Element
 function ParallaxCard({ project }: { project: ProjectCard }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -86,18 +84,18 @@ function ParallaxCard({ project }: { project: ProjectCard }) {
     const x = e.clientX - box.left - box.width / 2;
     const y = e.clientY - box.top - box.height / 2;
     
-    const rotateX = -(y / (box.height / 2)) * 6; 
-    const rotateY = (x / (box.width / 2)) * 6;
+    const rotateX = -(y / (box.height / 2)) * 5; 
+    const rotateY = (x / (box.width / 2)) * 5;
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+    card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
     card.style.transition = "transform 0.08s ease-out";
   };
 
   const handleMouseLeave = () => {
     const card = cardRef.current;
     if (!card) return;
-    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
-    card.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)";
+    card.style.transform = "perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+    card.style.transition = "transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)";
   };
 
   return (
@@ -105,48 +103,67 @@ function ParallaxCard({ project }: { project: ProjectCard }) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group bg-white border border-slate-200/80 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 will-change-transform"
+      className="group bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 will-change-transform"
     >
-      <div className="space-y-5">
-        <div className="relative aspect-[16/10] w-full bg-slate-100 overflow-hidden border-b border-slate-100 shrink-0">
+      <div className="space-y-6">
+        {/* Aspect-Locked Media Base Layer */}
+        <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden border-b border-slate-100 shrink-0">
           <Image
             src={project.imgSrc}
             alt={project.title}
             fill
             sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-103 brightness-[0.98] group-hover:brightness-100"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-
-        <div className="px-6 space-y-3">
-          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[10px] font-bold tracking-wider uppercase">
+          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-950/80 text-white text-[9px] font-black tracking-widest uppercase backdrop-blur-md">
+            <Terminal className="h-3 w-3 text-blue-400" />
             {project.category}
           </div>
-          
-          <h3 className="text-base font-black tracking-tight text-slate-950 group-hover:text-blue-600 transition-colors duration-200 leading-snug">
+        </div>
+
+        {/* Content Body Space */}
+        <div className="px-6 space-y-3.5">
+          {/* Main Structural Title */}
+          <h3 className="text-base sm:text-lg font-black tracking-tight text-slate-950 group-hover:text-blue-600 transition-colors duration-200 leading-snug">
             {project.title}
           </h3>
           
-          <p className="text-xs text-slate-500 font-medium leading-relaxed line-clamp-3">
+          {/* Business Impact Value */}
+          <p className="text-xs text-blue-700 font-bold leading-relaxed bg-blue-50/60 border border-blue-100/50 rounded-lg px-3 py-2">
+            <span className="uppercase text-[9px] block tracking-wider font-black text-blue-500 mb-0.5">Impact Vector:</span>
             {project.impact}
           </p>
+
+          {/* Deep Engineering Detail */}
+          <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+            {project.technicalBrief}
+          </p>
+
+          {/* Technology Pills System */}
+          <div className="flex flex-wrap gap-1.5 pt-1">
+            {project.tags.map((tag, tIdx) => (
+              <span key={tIdx} className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 text-slate-600 rounded">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="mt-6 px-6 pb-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-        <div className="flex items-center gap-4 text-[11px] font-bold text-slate-400">
-          <div className="flex items-center gap-1">
+      {/* Meta Footer Bar */}
+      <div className="mt-8 px-6 pb-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+        <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-wider text-slate-400">
+          <div className="flex items-center gap-1.5">
             <User className="h-3.5 w-3.5 text-slate-300" />
-            <span>{project.author}</span>
+            <span className="text-slate-500">{project.author}</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             <Calendar className="h-3.5 w-3.5 text-slate-300" />
             <span>{project.date}</span>
           </div>
         </div>
 
-        <div className="h-7 w-7 rounded-lg bg-slate-50 text-slate-400 group-hover:bg-blue-50 group-hover:text-blue-600 flex items-center justify-center border border-slate-100 group-hover:border-blue-100 transition-all duration-300">
+        <div className="h-8 w-8 rounded-xl bg-slate-50 text-slate-500 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center border border-slate-200/60 group-hover:border-blue-600 shadow-sm transition-all duration-300 shrink-0">
           <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
       </div>

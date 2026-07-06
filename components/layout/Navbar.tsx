@@ -41,7 +41,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden lg:flex">
           <Link
-            href="#contact"
+            href="/get-a-quote"
             className="rounded-sm border border-blue-500 px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-blue-600 hover:border-blue-600"
           >
             Get a quote

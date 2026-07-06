@@ -3,6 +3,7 @@ import CompanyProfile from "@/components/CompanyProfile"
 import ClientSlider from "@/components/shared/ClientSlider"
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CaseStudyJournal from "@/components/CaseStudyJournal";
+import ProjectCTA from "@/components/ProjectCTA";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <CompanyProfile/>
       <WhyChooseUs/>
+      <ProjectCTA/>
       <CaseStudyJournal/>
       <ClientSlider/>
     </main>
