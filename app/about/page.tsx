@@ -2,6 +2,7 @@ import AboutHero from "@/components/about/AboutHero";
 import AboutProcess from "@/components/about/AboutProcess"
 import AboutStory from "@/components/about/AboutStory"
 import AboutTestimonials from "@/components/about/AboutTestimonal"
+import OurTeamSection from "@/components/about/OurTeamSection";
 import CaseStudyJournal from "@/components/CaseStudyJournal";
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutHero />
       <AboutProcess/>
       <AboutStory/>
+      <OurTeamSection/>
       <CaseStudyJournal/>
       <AboutTestimonials/>
     </main>
