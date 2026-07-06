@@ -23,7 +23,7 @@ const HeroSection = () => {
 
       {/* Main Core Copy Wrapper (Fully SEO Aligned) */}
       <div className="flex-grow flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto my-16 relative z-10">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight max-w-4xl">
           Powerful IT & Web <br /> Application <span className="text-blue-500">Solutions</span>.
         </h1>
         <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl font-medium tracking-wide">
