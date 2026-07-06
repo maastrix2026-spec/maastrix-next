@@ -8,28 +8,55 @@ export interface Project {
   clientCountry: string;
   deepLink: string;
   isFeatured?: boolean;
+  mode: "production" | "development"; // Tracking deployment lifecycle state
 }
 
 export const mockProjects: Project[] = [
   {
     id: "adjuster-assist",
     title: "AdjusterAssist Platform",
-    description: "An insurance-only conversational claim workspace integrating multi-tier unified input models, dynamic timeline logs, and automated AI output classification.",
-    category: "Enterprise Software",
-    techStack: ["Node.js", "Express", "React", "OpenAI API", "Supabase"],
+    description: "An advanced insurance claim drafting engine utilizing Retrieval-Augmented Generation (RAG), high-accuracy OCR text extraction, and a multi-tier classification workflow in a mobile ecosystem.",
+    category: "Mobile App",
+    techStack: ["Node.js", "Expo", "React Native", "OpenAI API", "Supabase"],
     clientName: "AdjusterAssist LLC",
     clientCountry: "USA",
-    deepLink: "https://adjusterassist.com"
+    deepLink: "https://adjuster-assist.vercel.app",
+    mode: "development"
   },
   {
-    id: "carpooling-api",
-    title: "Carpooling Mobility Hub",
-    description: "A secure backend infrastructure engineered for automated ride sharing, route optimization middleware, and scalable role-based user management access pipelines.",
+    id: "claimscope",
+    title: "ClaimScope™ Intelligence System",
+    description: "A centralized governance intelligence platform designed to structure complex enterprise documentation, compliance workflows, and multi-tier decision accountability into a perfectly traceable operational framework.",
+    category: "Web",
+    techStack: ["Next.js", "Node.js", "Express", "Tailwind CSS"],
+    clientName: "ClaimScope Consulting",
+    clientCountry: "USA",
+    deepLink: "https://claimscopeconsulting.com",
+    isFeatured: true,
+    mode: "production"
+  },
+  {
+    id: "poolshare-mobility",
+    title: "PoolShare Mobility Hub",
+    description: "A smart carpooling and decentralized ride-sharing infrastructure engineered with custom route optimization, location matching middleware, and secure user profile pipelines.",
     category: "Mobile App",
     techStack: ["React Native", "Expo", "Node.js", "MariaDB", "Sentry"],
-    clientName: "Maastrix Labs Internal",
+    clientName: "Maastrix Solutions Internal",
     clientCountry: "Global",
-    deepLink: "https://github.com/maastrix-solutions"
+    deepLink: "https://github.com/maastrix-solutions",
+    mode: "development"
+  },
+  {
+    id: "hadms-jordan",
+    title: "HADMS Humanitarian Platform",
+    description: "A critical international aid management dashboard engineered to monitor distribution frameworks, optimize supply logs, and secure dynamic relief allocation workflows.",
+    category: "Enterprise Software",
+    techStack: ["Node.js", "Express", "MySQL", "Tailwind CSS"],
+    clientName: "Humanitarian Aid & Relief Coordination",
+    clientCountry: "Jordan",
+    deepLink: "https://maastrixsolutions.com",
+    isFeatured: true,
+    mode: "production"
   },
   {
     id: "fetch-armor",
@@ -39,7 +66,8 @@ export const mockProjects: Project[] = [
     techStack: ["TypeScript", "Node.js", "npm Registry"],
     clientName: "Open Source Community",
     clientCountry: "Global",
-    deepLink: "https://www.npmjs.com/package/fetch-armor"
+    deepLink: "https://www.npmjs.com/package/fetch-armor",
+    mode: "production"
   },
   {
     id: "csc-backend",
@@ -49,7 +77,8 @@ export const mockProjects: Project[] = [
     techStack: ["Node.js", "Express", "MySQL", "Tailwind CSS"],
     clientName: "CSC Enterprises",
     clientCountry: "Australia",
-    deepLink: "https://maastrixsolutions.com"
+    deepLink: "https://maastrixsolutions.com",
+    mode: "production"
   },
   {
     id: "vanguard-settlement",
@@ -59,6 +88,7 @@ export const mockProjects: Project[] = [
     techStack: ["Node.js", "Express", "PostgreSQL", "Redis"],
     clientName: "Vanguard FinTech",
     clientCountry: "UK",
-    deepLink: "https://maastrixsolutions.com"
+    deepLink: "https://maastrixsolutions.com",
+    mode: "production"
   }
 ];

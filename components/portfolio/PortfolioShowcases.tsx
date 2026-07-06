@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { ArrowUpRight, Folder, Globe, Layers, ArrowRight } from "lucide-react";
+import { ArrowUpRight, Folder, Globe, Layers, Activity, ShieldCheck } from "lucide-react";
 import { mockProjects, Project } from "@/data/portfolio";
 
+// Explicitly extending the types to account for the new project state flag
 type FilterCategory = "All" | "Web" | "Mobile App" | "Enterprise Software" | "Developer Tools";
 
 export default function PortfolioShowcase() {
@@ -68,33 +69,46 @@ export default function PortfolioShowcase() {
             PROJECTS GRID MATRIX
             ========================================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {filteredProjects.map((project: Project) => (
+          {filteredProjects.map((project: Project & { mode?: "production" | "development" }) => (
             <div
               key={project.id}
-              className="group relative flex flex-col justify-between p-6 sm:p-8 bg-white border border-slate-200/80 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] hover:border-slate-300 transition-all duration-300 hover:bg-[#090b0e] hover:border-[#090b0e] overflow-hidden"
+              className="group relative flex flex-col justify-between p-6 sm:p-8 bg-white border border-slate-200/80 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(2,132,199,0.06)] hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
-              {/* Premium Top Line Accent Frame */}
-              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-blue-500/0 to-transparent group-hover:via-blue-500/50 transition-all duration-500" />
-
               <div>
-                {/* Meta Row: Project Type Tag & Client Geo-Location */}
-                <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100 group-hover:border-white/10 transition-colors duration-200">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-100/40 px-2.5 py-1 rounded-md group-hover:bg-white/10 group-hover:text-blue-400 group-hover:border-transparent transition-all duration-200">
-                    <Folder className="h-3 w-3 shrink-0" />
-                    {project.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400 group-hover:text-slate-500 transition-colors duration-200">
-                    <Globe className="h-3 w-3 text-slate-300 group-hover:text-slate-600 transition-colors duration-200" />
+                {/* Meta Row: Project Type Tag, Development Status & Client Geo-Location */}
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 border border-blue-100/40 px-2.5 py-1 rounded-md">
+                      <Folder className="h-3 w-3 shrink-0" />
+                      {project.category}
+                    </span>
+
+                    {/* Operational Project Mode Tag */}
+                    {project.mode === "development" ? (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-amber-600 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded">
+                        <Activity className="h-2.5 w-2.5 shrink-0 animate-pulse" />
+                        Under Dev
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded">
+                        <ShieldCheck className="h-2.5 w-2.5 shrink-0" />
+                        In Prod
+                      </span>
+                    )}
+                  </div>
+
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-400">
+                    <Globe className="h-3 w-3 text-slate-300" />
                     {project.clientCountry}
                   </span>
                 </div>
 
                 {/* Main Identity Title & Narrative */}
                 <div className="space-y-3 mb-6">
-                  <h3 className="text-xl font-black tracking-tight text-slate-950 group-hover:text-white transition-colors duration-200 flex items-center justify-between gap-2">
+                  <h3 className="text-xl font-black tracking-tight text-slate-950">
                     {project.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-400 font-medium leading-relaxed transition-colors duration-200">
+                  <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
                     {project.description}
                   </p>
                 </div>
@@ -106,7 +120,7 @@ export default function PortfolioShowcase() {
                   {project.techStack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-[10px] font-bold tracking-wide text-slate-600 bg-slate-50 border border-slate-200/40 px-2.5 py-1 rounded-md group-hover:bg-white/5 group-hover:text-slate-300 group-hover:border-transparent transition-all duration-200"
+                      className="text-[10px] font-bold tracking-wide text-slate-600 bg-slate-50 border border-slate-200/40 px-2.5 py-1 rounded-md"
                     >
                       {tech}
                     </span>
@@ -114,12 +128,12 @@ export default function PortfolioShowcase() {
                 </div>
 
                 {/* Client Reference & Call to Action Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-slate-100 group-hover:border-white/10 text-[11px] font-bold transition-colors duration-200">
+                <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-[11px] font-bold">
                   <div>
-                    <span className="text-slate-400 group-hover:text-slate-500 block font-medium text-[9px] uppercase tracking-widest">
+                    <span className="text-slate-400 block font-medium text-[9px] uppercase tracking-widest">
                       Enterprise Client
                     </span>
-                    <span className="text-slate-800 group-hover:text-white text-xs sm:text-sm font-black transition-colors duration-200">
+                    <span className="text-slate-800 text-xs sm:text-sm font-black">
                       {project.clientName}
                     </span>
                   </div>
@@ -128,10 +142,10 @@ export default function PortfolioShowcase() {
                     href={project.deepLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-50 group-hover:bg-white border border-slate-200 group-hover:border-white text-slate-700 group-hover:text-slate-950 rounded-xl transition-all duration-300 shadow-sm font-black uppercase tracking-widest text-[10px]"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-50 hover:bg-slate-950 border border-slate-200 hover:border-slate-950 text-slate-700 hover:text-white rounded-xl transition-all duration-200 shadow-sm font-black uppercase tracking-widest text-[10px]"
                   >
                     Launch
-                    <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-slate-950 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-inherit transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </a>
                 </div>
               </div>
@@ -147,7 +161,7 @@ export default function PortfolioShowcase() {
           <div className="text-center py-20 border border-dashed border-slate-200 rounded-3xl bg-white shadow-sm max-w-md mx-auto">
             <Layers className="h-10 w-10 text-slate-300 mx-auto mb-3 animate-pulse" />
             <h4 className="text-sm font-black text-slate-950 uppercase tracking-wider">Pipeline Syncing</h4>
-            <p className="text-xs font-medium text-slate-400 mt-1">Additional software products under this engine matrix are coming online soon.</p>
+            <p className="text-xs font-medium text-slate-400 mt-1">Additional production software products and modules under development are coming online soon.</p>
           </div>
         )}
 
