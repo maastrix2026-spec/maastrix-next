@@ -9,16 +9,12 @@ import {
   Mail,
   Globe,
   ArrowUpRight,
-  ChevronUp
 } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,7 +53,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-8 border-b border-white/5">
 
           {/* Location */}
-          <div className="group flex gap-4 items-start p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
+          {/* Changed items-start -> items-center */}
+          <div className="group flex gap-4 items-center p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
             <div className="p-3 rounded-lg bg-blue-600/10 text-blue-400 transition-transform duration-300 group-hover:scale-110 shrink-0">
               <MapPin className="h-5 w-5" />
             </div>
@@ -70,7 +67,8 @@ export default function Footer() {
           </div>
 
           {/* Phone */}
-          <a href="tel:+916742540245" className="group flex gap-4 items-start p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
+          {/* Changed items-start -> items-center */}
+          <a href="tel:+916742540245" className="group flex gap-4 items-center p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
             <div className="p-3 rounded-lg bg-blue-600/10 text-blue-400 transition-transform duration-300 group-hover:scale-110 shrink-0">
               <Phone className="h-5 w-5" />
             </div>
@@ -84,7 +82,8 @@ export default function Footer() {
           </a>
 
           {/* Email */}
-          <a href="mailto:info@maastrixsolutions.com" className="group flex gap-4 items-start p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
+          {/* Changed items-start -> items-center */}
+          <a href="mailto:info@maastrixsolutions.com" className="group flex gap-4 items-center p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
             <div className="p-3 rounded-lg bg-blue-600/10 text-blue-400 transition-transform duration-300 group-hover:scale-110 shrink-0">
               <Mail className="h-5 w-5" />
             </div>
@@ -97,7 +96,8 @@ export default function Footer() {
           </a>
 
           {/* Web */}
-          <Link href="/" className="group flex gap-4 items-start p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
+          {/* Changed items-start -> items-center */}
+          <Link href="/" className="group flex gap-4 items-center p-4 rounded-xl bg-white/[0.02] border border-white/5 transition-all duration-300 hover:bg-white/[0.04] hover:border-blue-500/20">
             <div className="p-3 rounded-lg bg-blue-600/10 text-blue-400 transition-transform duration-300 group-hover:scale-110 shrink-0">
               <Globe className="h-5 w-5" />
             </div>
@@ -148,7 +148,7 @@ export default function Footer() {
               {[
                 {
                   name: "Facebook",
-                  url: "#",
+                  url: "https://www.facebook.com/people/Maastrix-Solutions-Pvt-Ltd/100072227944717/",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -157,7 +157,7 @@ export default function Footer() {
                 },
                 {
                   name: "Twitter / X",
-                  url: "#",
+                  url: "https://x.com/Maastrix1",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                       <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
@@ -166,7 +166,7 @@ export default function Footer() {
                 },
                 {
                   name: "LinkedIn",
-                  url: "#",
+                  url: "https://www.linkedin.com/company/maastrix-solutions---india/?originalSubdomain=in",
                   svg: (
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -280,15 +280,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* Floating Back-to-Top Trigger */}
-      <button
-        onClick={scrollToTop}
-        aria-label="Back to top"
-        className="absolute bottom-4 right-4 p-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl hover:-translate-y-0.5 transition-all duration-300 group z-20"
-      >
-        <ChevronUp className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-      </button>
     </footer>
   );
 }

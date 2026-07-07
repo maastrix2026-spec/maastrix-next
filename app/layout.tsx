@@ -1,8 +1,13 @@
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans, Geist } from 'next/font/google';
 import "./globals.css";
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/CookieConsent';
+import { cn } from "@/lib/utils";
+import ScrollToTop from '@/components/ScrollToTop';
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // Configure the Inter font weights
 const jakarta = Plus_Jakarta_Sans({
@@ -23,12 +28,13 @@ export default function RootLayout({
 }) {
   return (
     // Apply the font class directly to the HTML tag globally
-    <html lang="en" className={jakarta.className}>
+    <html lang="en" className={cn(jakarta.className, "font-sans", geist.variable)}>
       <body>
         <Navbar/>
         {children}
         <CookieConsent/>
         <Footer/>
+        <ScrollToTop />
       </body>
     </html>
   );
