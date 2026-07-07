@@ -49,5 +49,19 @@ export const servicesData: ServiceItem[] = [
     description: "Maximizing organic search loops and indexability scores using strategic structural auditing routines that place your business directly in front of targeted global leads.",
     iconName: "seo",
     imgSrc: "/assets/images/services/seo.webp"
+  },
+  {
+    id: "intelligent-knowledge-search",
+    title: "Intelligent Retrieval & Search Systems",
+    description: "Developing hyper-personalized AI chatbots and advanced semantic search configurations that crawl complex internal knowledge bases to deliver instant, context-aware answers.",
+    iconName: "brain", // You can map this to a unique icon like an 'eye' or 'search' icon if your component allows it later
+    imgSrc: "/assets/images/services/ai-search.webp"
+  },
+  {
+    id: "workflow-automation",
+    title: "Autonomous Workflow Automation",
+    description: "Orchestrating zero-maintenance event-driven automation pipelines and agentic background loops that eliminate operational overhead and link isolated enterprise software stacks.",
+    iconName: "wad", // Maps perfectly into your custom system workflow architectures
+    imgSrc: "/assets/images/services/workflow.webp"
   }
 ];

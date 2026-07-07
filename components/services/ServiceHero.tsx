@@ -88,6 +88,7 @@ export default function ServiceHero() {
                             fill
                             className="object-cover object-center"
                             priority
+                            sizes="(max-w-768px) 100vw, (max-w-1200px) 100vw, 100vw"
                         />
 
                         {/* Subtle premium light sheen overlay */}

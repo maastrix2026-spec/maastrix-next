@@ -25,12 +25,12 @@ export default function Footer() {
     if (!email) return;
 
     setIsSubmitting(true);
-    
+
     // Simulate API network latency delay
     await new Promise((resolve) => setTimeout(resolve, 800));
-    
+
     alert(`Success! We've received your email (${email}) and subscribed you to our newsletter.`);
-    
+
     setEmail("");
     setIsSubmitting(false);
   };
@@ -118,13 +118,17 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-4 space-y-4">
             <Link href="/" className="inline-flex items-center gap-3 focus:outline-none group">
               <div className="relative w-20 h-20 shrink-0">
-                <Image 
-                  src="/assets/images/logo-bg-r.png" 
-                  alt="Maastrix Solutions Logo Icon" 
-                  fill
-                  className="object-contain"
-                  priority
-                />
+                <div className="relative w-20 h-20 shrink-0">
+                  <Image
+                    src="/assets/images/logo-bg-r.png"
+                    alt="Maastrix Solutions Logo Icon"
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="80px"
+                    unoptimized
+                  />
+                </div>
               </div>
               <div className="flex flex-col justify-center leading-none">
                 <span className="text-lg font-black tracking-wider text-white uppercase group-hover:text-blue-400 transition-colors">
@@ -138,7 +142,7 @@ export default function Footer() {
             <p className="text-xs leading-relaxed text-gray-400 max-w-sm">
               We are a highly effective, learning and fast growing organization. Up till now, our customers have their base in the USA, UK, Canada, Norway, Australia and India.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex gap-2.5 pt-1">
               {[
