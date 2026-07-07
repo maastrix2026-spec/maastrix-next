@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: "Maastrix Solutions",
     images: [
       {
-        url: "https://maastrixsolutions.com/og.png",
+        url: "https://maastrixsolutions.com/og",
         width: 1200,
         height: 630,
         alt: "Maastrix Solutions Technical Engineering Workspace & Culture Banner",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Careers at Maastrix Solutions | Software Engineering Openings",
     description: "Looking for your next challenge? We are hiring backend architects, mobile developers, and enterprise system designers.",
-    images: ["https://maastrixsolutions.com/og.png"],
+    images: ["https://maastrixsolutions.com/og"],
   },
 };
 

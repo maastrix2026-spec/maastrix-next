@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Maastrix Solutions",
     images: [
       {
-        url: "https://maastrixsolutions.com/og.png", // Replace with a curated grid overlay of your best project screens
+        url: "https://maastrixsolutions.com/og", // Replace with a curated grid overlay of your best project screens
         width: 1200,
         height: 630,
         alt: "Maastrix Solutions Enterprise Development Portfolio Showcase",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Enterprise Project Showcase & Engineering Work | Maastrix Solutions",
     description: "Real-world case studies detailing our deployment of secure web apps, custom API architectures, and scaled digital products.",
-    images: ["https://maastrixsolutions.com/og.png"],
+    images: ["https://maastrixsolutions.com/og"],
   },
 };
 

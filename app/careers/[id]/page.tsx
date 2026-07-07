@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       images: [
         {
-          url: "https://maastrixsolutions.com/og.png",
+          url: "https://maastrixsolutions.com/og",
           width: 1200,
           height: 630,
           alt: `Maastrix Solutions Recruitment - ${job.title}`,
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: ["https://maastrixsolutions.com/og.png"],
+      images: ["https://maastrixsolutions.com/og"],
     },
   };
 }

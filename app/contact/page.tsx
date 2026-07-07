@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Maastrix Solutions",
     images: [
       {
-        url: "https://maastrixsolutions.com/og.png", // Replace with an asset showcasing your global communication lines
+        url: "https://maastrixsolutions.com/og", // Replace with an asset showcasing your global communication lines
         width: 1200,
         height: 630,
         alt: "Maastrix Solutions Consultation and Project Intake Team",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Maastrix Solutions | Enterprise IT & Engineering",
     description: "Reach out to discuss robust custom software execution, scalable cloud backends, and full-scale product builds.",
-    images: ["https://maastrixsolutions.com/og.png"],
+    images: ["https://maastrixsolutions.com/og"],
   },
 };
 

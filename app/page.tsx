@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Maastrix Solutions",
     images: [
       {
-        url: "https://maastrixsolutions.com/og.png", 
+        url: "https://maastrixsolutions.com/og", 
         width: 1200,
         height: 630,
         alt: "Maastrix Executive Engineering Technical Banner",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Enterprise Systems Architecture & AI Engineering",
     description: "Production-grade backend engineering and intelligent workflow automation loops.",
-    images: ["https://maastrixsolutions.com/og.png"],
+    images: ["https://maastrixsolutions.com/og"],
   },
 };
 
