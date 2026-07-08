@@ -37,7 +37,7 @@ export default function Footer() {
         {/* CONTACT TILES */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-12 border-b border-white/5">
           {[
-            { icon: MapPin, title: "Location", val: "Acharya Vihar, Bhubaneswar, Odisha, India", href: "#" },
+            { icon: MapPin, title: "Location", val: "MBM Silver,Plot L3/60, 3rd Floor, Acharya Vihar, Bhubaneswar, Odisha, India", href: "#" },
             { icon: Phone, title: "Phone", val: "+91-674-2540245", href: "tel:+916742540245" },
             { icon: Mail, title: "Email", val: "info@maastrixsolutions.com", href: "mailto:info@maastrixsolutions.com" },
             { icon: Globe, title: "Web", val: "www.maastrixsolutions.com", href: "/" },
