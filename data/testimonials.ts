@@ -26,26 +26,26 @@ export const mockTestimonials: Testimonial[] = [
   },
   {
     id: 3,
-    name: "Elena Rostova",
-    role: "Head of Infrastructure",
-    company: "Vanguard FinTech",
+    name: "Dilanim",
+    role: "UK",
+    company: "",
     content: "Maas Infotech did a good job and I think we both learned a lot of this project .",
-    initials: "ER"
+    initials: "D"
   },
   {
     id: 4,
-    name: "David Chen",
-    role: "Director of Engineering",
-    company: "Aether Cloud Solutions",
-    content: "Their developers integrated seamlessly with our pipeline. The structural shift away from generic frameworks to custom-tailored API layouts accelerated our release velocity twofold.",
-    initials: "DC"
+    name: "Peter Ellis",
+    role: "USA",
+    company: "Onyx World Ltd",
+    content: "Thank you for the prompt service we will be happy to recommend you. You satisfied our ever changing demand without any problems.",
+    initials: "PE"
   },
   {
     id: 5,
-    name: "Alana Vance",
-    role: "Founder",
-    company: "Streamline Global",
-    content: "Pixel-perfect frontend execution combined with complex data processing on the backend. They don't just build layout templates; they build highly resilient digital infrastructure.",
-    initials: "AV"
+    name: "Coopson",
+    role: "USA",
+    company: "",
+    content: "Delivered before time, and exactly to my spec. Top providers will defiantly use again, and highly recommended.",
+    initials: "C"
   }
 ];
