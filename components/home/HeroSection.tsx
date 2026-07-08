@@ -1,5 +1,5 @@
 import React from 'react';
-import { Monitor, Cpu, Layers, Smartphone, GlobeCheck } from 'lucide-react';
+import { Monitor, Cpu, Layers, Smartphone, GlobeCheck, BrainCircuit } from 'lucide-react';
 
 const HeroSection = () => {
   const features = [
@@ -8,6 +8,7 @@ const HeroSection = () => {
     { icon: <Cpu className="w-6 h-6" />, title: "IT Solutions" },
     { icon: <Layers className="w-6 h-6" />, title: "Custom Software" },
     { icon: <GlobeCheck className="w-6 h-6" />, title: "Secure Deployment" },
+    { icon: <BrainCircuit className="w-6 h-6" />, title: "AI Integration" },
   ];
 
   return (
@@ -33,7 +34,7 @@ const HeroSection = () => {
 
       {/* Bottom Feature Grid with boxed grid layouts directly replicating Gp template frame */}
       <div className="w-full border-t border-white/10 bg-black/20 backdrop-blur-sm relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-0">
           {features.map((feature, index) => (
             <div
               key={index}
