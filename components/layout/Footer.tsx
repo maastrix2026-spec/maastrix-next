@@ -22,10 +22,10 @@ export default function Footer() {
   const footerNavLinks = [
     { label: "Terms & conditions", href: "/legal/terms" },
     { label: "Privacy Policy", href: "/legal/privacy-policy" },
-    { label: "FAQs", href: "/support/faq" },
-    { label: "Sitemap", href: "/sitemap.xml" },
+    // { label: "FAQs", href: "/support/faq" },
+    // { label: "Sitemap", href: "/sitemap.xml" },
     { label: "Blog", href: "/blog" },
-    { label: "Feedback", href: "/feedback" },
+    // { label: "Feedback", href: "/feedback" },
     { label: "Contact us", href: "/contact" },
   ];
 
