@@ -8,8 +8,8 @@ import ProjectCTA from "@/components/ProjectCTA";
 
 // Core SEO Metadata Configuration 
 export const metadata: Metadata = {
-  title: "Enterprise Systems Architecture & AI Engineering | YourCompany",
-  description: "We engineer high-performance Node.js backends, intelligent machine learning automation pipelines, and robust cross-platform mobile systems built to scale.",
+  title: "Maastrix Solution | Enterprise Systems Architecture & AI Engineering ",
+  description: "We engineer high-performance backends, intelligent machine learning automation pipelines, and robust cross-platform mobile systems built to scale.",
   keywords: [
     "Backend Software Development",
     "Node.js Systems Architect",
@@ -17,7 +17,8 @@ export const metadata: Metadata = {
     "React Native Mobile Applications",
     "Custom CMS Solutions",
     "SEO optimisation",
-    "Web Development"
+    "Web Development",
+    "Mobile Application Development"
   ],
   alternates: {
     canonical: "https://maastrixsolutions.com", 

@@ -15,10 +15,11 @@ export const metadata: Metadata = {
     "Enterprise Web Development", 
     "Backend Infrastructure Engineering", 
     "Custom IT Portal Solutions",
-    "React Native App Development"
+    "React Native App Development",
+    "Software Development"
   ],
   alternates: {
-    canonical: "https://maastrixsolutions.com/about", // Replace with your production domain
+    canonical: "https://maastrixsolutions.com/about",
   },
   openGraph: {
     title: "About Maastrix Solutions | Enterprise Web & IT Engineering Leader",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Maastrix Solutions",
     images: [
       {
-        url: "https://maastrixsolutions.com/og", // Replace with your actual asset link
+        url: "https://maastrixsolutions.com/og", 
         width: 1200,
         height: 630,
         alt: "Maastrix Solutions Executive Leadership and Engineering Team",

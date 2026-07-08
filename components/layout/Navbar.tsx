@@ -36,7 +36,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center select-none group relative">
           {/* Increased size: w-28 h-28 (112px). We add a subtle negative margin 
       if you want it to "break" the navbar, but absolute sizing is safer here. */}
-          <div className="relative w-28 h-28 shrink-0 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-28 h-28 shrink-0 transition-transform duration-300">
             <Image
               src="/assets/images/logo-bg-r.png"
               alt="Maastrix Solutions Logo"
