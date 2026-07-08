@@ -58,17 +58,7 @@ export const mockProjects: Project[] = [
     isFeatured: true,
     mode: "production"
   },
-  {
-    id: "pop-telecom",
-    title: "POP Telecom",
-    description: "Designed and developed a broadband service platform for POP Telecom, enabling customers to check availability, compare plans, select routers and add-ons, complete secure payments, and schedule broadband installations seamlessly.",
-    category: "Web",
-    techStack: ["React.js", "Laravel", "SQL"],
-    clientName: "John Burns, London",
-    clientCountry: "UK",
-    deepLink: "https://www.poptelecom.co.uk",
-    mode: "production"
-  },
+  
   {
     id: "vtc",
     title: "Virtual tour Cafe",

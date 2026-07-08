@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ShimmerButton } from "@/components/ui/shimmer-button"
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -31,9 +32,21 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 z-50 w-full border-b border-white/5 bg-black/40 backdrop-blur-md">
       <nav className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 lg:px-8">
 
-        {/* TEXT LOGO BRANDING */}
-        <Link href="/" className="text-2xl font-black uppercase tracking-wider text-white select-none">
-          MAASTRIX<span className="text-blue-500">.</span>
+        {/* IMAGE LOGO BRANDING */}
+        <Link href="/" className="flex items-center select-none group relative">
+          {/* Increased size: w-28 h-28 (112px). We add a subtle negative margin 
+      if you want it to "break" the navbar, but absolute sizing is safer here. */}
+          <div className="relative w-28 h-28 shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/assets/images/logo-bg-r.png"
+              alt="Maastrix Solutions Logo"
+              fill
+              className="object-contain"
+              priority
+              sizes="112px"
+              unoptimized
+            />
+          </div>
         </Link>
 
         {/* Desktop Links */}
@@ -45,8 +58,8 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-xs font-bold uppercase tracking-widest transition-colors duration-200 relative py-1 ${active
-                    ? "text-blue-500 font-extrabold"
-                    : "text-gray-300 hover:text-blue-400"
+                  ? "text-blue-500 font-extrabold"
+                  : "text-gray-300 hover:text-blue-400"
                   }`}
               >
                 {item.name}
@@ -91,8 +104,8 @@ export default function Navbar() {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={`block rounded-md px-3 py-3 text-sm font-semibold tracking-wider transition-colors duration-150 ${active
-                    ? "bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 pl-2"
-                    : "text-gray-300 hover:bg-white/5 hover:text-blue-400"
+                  ? "bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 pl-2"
+                  : "text-gray-300 hover:bg-white/5 hover:text-blue-400"
                   }`}
               >
                 {item.name}
