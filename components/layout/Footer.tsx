@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-6 border-t border-white/5 text-[10px] text-gray-500 uppercase tracking-wider">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-6 border-t border-white/5 text-[12px] text-gray-500 uppercase tracking-wider">
           <p>© 2026 Maastrix Solutions. All Rights Reserved.</p>
           <div className="flex gap-4">
             {footerNavLinks.map((item) => (
