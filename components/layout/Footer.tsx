@@ -56,7 +56,7 @@ export default function Footer() {
 
           {/* Logo & Running Text Section Together */}
           <div className="lg:col-span-5 flex items-center gap-4">
-            <Link href="/" className="relative w-20 h-20 shrink-0 block">
+            <Link href="/" className="relative w-25 h-25 shrink-0 block">
               <Image
                 src="/assets/images/logo-bg-r.png"
                 alt="Maastrix Solutions Logo"
@@ -66,8 +66,8 @@ export default function Footer() {
                 unoptimized
               />
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 max-w-sm">
-              We are a highly effective, learning and fast growing organization with a global footprint in USA, UK, Canada, Norway, Australia and India.
+            <p className="text-[13px] leading-relaxed text-gray-400 max-w-xs">
+              A fast-growing global organization with operations in the USA, UK, Canada, Norway, Australia, and India.
             </p>
           </div>
 

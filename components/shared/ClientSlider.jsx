@@ -21,7 +21,7 @@ export default function ClientSlider() {
               OUR CLIENTS
             </span>
             <h2 className="text-base font-extrabold tracking-tight text-secondary uppercase mt-1 leading-snug">
-              Trusted by <br className="hidden lg:block"/> Global Partners
+              Trusted by Leading<br className="hidden lg:block"/> Enterprise Clients
             </h2>
           </div>
 
@@ -35,7 +35,7 @@ export default function ClientSlider() {
             {/* Continuous Motion Row Track */}
             <div 
               className="flex w-max gap-20 items-center animate-marquee-loop whitespace-nowrap px-4"
-              style={{ animationPlayState: 'running' }}
+              style={{ animationPlayState: 'running', animationDuration: '50s',animationTimingFunction: 'linear', }}
               onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
               onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
             >

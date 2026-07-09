@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       animation: {
         marquee: 'marquee 35s linear infinite',
+        'marquee-loop': 'marquee 30s linear infinite',
       },
       keyframes: {
         marquee: {
