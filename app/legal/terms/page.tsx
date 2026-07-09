@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer'
 const page = () => {
   return (
     <div>
-      <Navbar isTransparent={true} />
+      <Navbar/>
       <TermsAndConditions />
       <Footer/>
     </div>
