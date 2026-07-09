@@ -1,4 +1,6 @@
 export const clientLogos = [
+  { id: 1, name: "Client One", src: "/assets/images/clients/client1.png" },
+  { id: 2, name: "Client Two", src: "/assets/images/clients/client2.png" },
   { id: 3, name: "Client Three", src: "/assets/images/clients/client3.png" },
   { id: 4, name: "Client Three", src: "/assets/images/clients/client4.png" },
   { id: 5, name: "Client Three", src: "/assets/images/clients/client5.png" },
@@ -6,6 +8,14 @@ export const clientLogos = [
   { id: 7, name: "Client Four", src: "/assets/images/clients/client7.png" },
   { id: 8, name: "Client Five", src: "/assets/images/clients/client8.png" },
   { id: 9, name: "Client Six", src: "/assets/images/clients/client9.png" },
-  { id: 1, name: "Client One", src: "/assets/images/clients/client1.png" },
-  { id: 2, name: "Client Two", src: "/assets/images/clients/client2.png" },
+  { id: 10, name: "Client Six", src: "/assets/images/clients/bk.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/agrodepot_logo.webp" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/handy_fox_logo.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/WNRL.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/tonyshandcarwash_pro.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/swiftautomation.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/SELASER_logo.svg" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/realEZ_logo.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/mortgage-lynx_logo.png" },
+  { id: 11, name: "Client Six", src: "/assets/images/clients/kasabio-logo.png" },
 ];
