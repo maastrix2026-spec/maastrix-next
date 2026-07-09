@@ -20,12 +20,13 @@ export default function JobDetailHero({ job }: JobHeroProps) {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[380px] sm:min-h-[440px] flex items-center bg-[#0d0f12] overflow-hidden border-b border-white/5">
-      <div 
+    // Notice the added pt-20 (or pt-24 / pt-32 depending on your navbar height)
+    <section className="relative w-full min-h-[380px] sm:min-h-[440px] flex items-center pt-24 bg-[#0d0f12] overflow-hidden border-b border-white/5">
+      <div
         className="absolute top-12 right-10 sm:right-32 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none will-change-transform"
         style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       />
-      <div 
+      <div
         className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
