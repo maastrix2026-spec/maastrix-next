@@ -94,7 +94,7 @@ export default function OurTeamSection() {
                                 <h4 className="text-sm font-black tracking-tight text-slate-950 mb-2">
                                     {strength.title}
                                 </h4>
-                                <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                                <p className="text-sm text-slate-500 font-medium leading-relaxed">
                                     {strength.description}
                                 </p>
                             </div>

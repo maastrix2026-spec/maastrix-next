@@ -47,7 +47,7 @@ export default function Footer() {
                 <item.icon className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-0.5">{item.title}</h3>
+                <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-0.5">{item.title}</h3>
                 <p className="text-[11px] text-gray-400 group-hover:text-white transition-colors">{item.val}</p>
               </div>
             </a>
@@ -83,7 +83,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="text-xs leading-relaxed text-gray-500 max-w-xs mt-4">
+            <p className="text-sm leading-relaxed text-gray-500 max-w-xs mt-4">
               We are a highly effective, learning and fast growing organization with a global footprint in USA, UK, Canada, Norway, Australia and India.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <h4 className="text-[10px] font-bold text-white uppercase tracking-widest">Newsletter</h4>
             <form onSubmit={handleSubscribe} className="flex gap-2">
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required className="flex-1 rounded-sm bg-white/5 border border-white/10 px-3 py-2 text-xs text-white" />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" required className="flex-1 rounded-sm bg-white/5 border border-white/10 px-3 py-2 text-sm text-white" />
               <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all">Subscribe</button>
             </form>
 
