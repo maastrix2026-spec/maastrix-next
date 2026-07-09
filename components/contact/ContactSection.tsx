@@ -197,7 +197,7 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {[
                     { id: "project", label: "Launch Project", desc: "Hire our core dev team" },
-                    { id: "career", label: "Join Team / Career", desc: "Submit engineering CV" },
+                    { id: "career", label: "Join Team / Career", desc: "Connect with HR team" },
                     { id: "general", label: "General Inquiry", desc: "Consultation & strategy" }
                   ].map((cat) => (
                     <button

@@ -4,6 +4,7 @@ export async function sendCareerMail(data: {
   name: string;
   email: string;
   phone?: string;
+  address?: string;
   message?: string;
   position?: string;
   experience?: string;
@@ -18,14 +19,11 @@ export async function sendCareerMail(data: {
       <p><b>Name:</b> ${data.name}</p>
       <p><b>Email:</b> ${data.email}</p>
       <p><b>Phone:</b> ${data.phone || "Not provided"}</p>
-      <hr />
-      <h3>Career Details</h3>
-      <p><b>Position:</b> ${data.position || "Not provided"}</p>
-      <p><b>Experience:</b> ${data.experience || "Not provided"}</p>
-      <p><b>Portfolio/CV:</b> ${data.portfolio || "Not provided"}</p>
-      <hr />
-      <p><b>Message:</b></p>
+      <p><b>Address:</b> ${data.address || "Not provided"}</p>
+       <p><b>Message:</b></p>
       <p>${data.message || "No message provided"}</p>
+      <hr />
+      
     `,
   });
 }
