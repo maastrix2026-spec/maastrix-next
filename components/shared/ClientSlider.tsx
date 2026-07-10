@@ -1,8 +1,16 @@
 "use client";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { clientLogos } from "../../data/clients";
 export default function ClientSlider() {
+  const [loadedImages, setLoadedImages] = useState(0);
+  const isReady = useMemo(
+    () => loadedImages >= clientLogos.length,
+    [loadedImages],
+  );
+  const handleImageLoad = () => {
+    setLoadedImages((current) => Math.min(current + 1, clientLogos.length));
+  };
   return (
     <section className="relative overflow-hidden border-y border-border-subtle bg-surface-light py-10 sm:py-12 lg:py-14">
       {" "}
@@ -26,13 +34,28 @@ export default function ClientSlider() {
           {/* Slider */}{" "}
           <div className="relative min-w-0 overflow-hidden lg:col-span-3">
             {" "}
-            {/* Edge gradients */}{" "}
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-10 bg-gradient-to-r from-surface-light via-surface-light/80 to-transparent sm:w-16" />{" "}
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-10 bg-gradient-to-l from-surface-light via-surface-light/80 to-transparent sm:w-16" />{" "}
-            {/* Moving track */}{" "}
-            <div className="client-marquee group flex w-max items-center">
+            {/* Edge masks */}{" "}
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-10 bg-gradient-to-r from-surface-light via-surface-light/90 to-transparent sm:w-16" />{" "}
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-10 bg-gradient-to-l from-surface-light via-surface-light/90 to-transparent sm:w-16" />{" "}
+            {/* Static placeholder while images load */}{" "}
+            {!isReady && (
+              <div className="flex h-16 items-center gap-10 overflow-hidden px-4 sm:gap-14 lg:gap-20">
+                {" "}
+                {clientLogos.slice(0, 4).map((logo) => (
+                  <div
+                    key={`placeholder-${logo.id}`}
+                    className="h-12 w-28 shrink-0 animate-pulse rounded-lg bg-slate-200/60 sm:h-14 sm:w-36 lg:h-16 lg:w-40"
+                  />
+                ))}{" "}
+              </div>
+            )}{" "}
+            {/* Animated track */}{" "}
+            <div
+              className={`client-marquee flex w-max items-center transition-opacity duration-500 ${isReady ? "opacity-100" : "pointer-events-none absolute inset-0 opacity-0"}`}
+            >
               {" "}
-              <LogoGroup /> <LogoGroup ariaHidden />{" "}
+              <LogoGroup onImageLoad={handleImageLoad} />{" "}
+              <LogoGroup ariaHidden />{" "}
             </div>{" "}
           </div>{" "}
         </div>{" "}
@@ -42,15 +65,16 @@ export default function ClientSlider() {
 }
 interface LogoGroupProps {
   ariaHidden?: boolean;
+  onImageLoad?: () => void;
 }
-function LogoGroup({ ariaHidden = false }: LogoGroupProps) {
+function LogoGroup({ ariaHidden = false, onImageLoad }: LogoGroupProps) {
   return (
     <div
       className="flex shrink-0 items-center gap-10 pr-10 sm:gap-14 sm:pr-14 lg:gap-20 lg:pr-20"
       aria-hidden={ariaHidden}
     >
       {" "}
-      {clientLogos.map((logo) => (
+      {clientLogos.map((logo, index) => (
         <div
           key={`${ariaHidden ? "duplicate" : "original"}-${logo.id}`}
           className="relative flex h-12 w-28 shrink-0 items-center justify-center sm:h-14 sm:w-36 lg:h-16 lg:w-40"
@@ -62,6 +86,9 @@ function LogoGroup({ ariaHidden = false }: LogoGroupProps) {
             fill
             sizes="(max-width: 640px) 112px, (max-width: 1024px) 144px, 160px"
             className="object-contain transition-transform duration-300 ease-out hover:scale-105"
+            loading="eager"
+            priority={index < 4}
+            onLoad={!ariaHidden ? onImageLoad : undefined}
           />{" "}
         </div>
       ))}{" "}

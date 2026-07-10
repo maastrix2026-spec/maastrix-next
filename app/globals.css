@@ -300,3 +300,6 @@
     transform: none;
   }
 }
+
+
+@keyframes client-marquee-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } } .client-marquee { animation: client-marquee-scroll 38s linear infinite; will-change: transform; transform: translate3d(0, 0, 0); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; contain: layout paint; } .client-marquee:hover { animation-play-state: paused; } @media (max-width: 640px) { .client-marquee { animation-duration: 28s; } } @media (prefers-reduced-motion: reduce) { .client-marquee { animation: none; transform: translate3d(0, 0, 0); } }
