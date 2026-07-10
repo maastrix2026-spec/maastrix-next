@@ -22,7 +22,7 @@ export default function CaseStudyJournal() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#f8fafc] text-slate-900 py-24 overflow-hidden border-t border-slate-200"
+      className="relative w-full bg-[#f8fafc] text-slate-900 py-20 overflow-hidden border-t border-slate-200"
       style={{ "--scroll-y": "0" } as React.CSSProperties}
     >
 

@@ -9,7 +9,7 @@ export default function AboutTestimonials() {
   const doubleTestimonials = [...mockTestimonials, ...mockTestimonials];
 
   return (
-    <section className="relative bg-white text-slate-900 font-sans py-20 lg:py-28 overflow-hidden border-t border-slate-100">
+    <section className="relative bg-white text-slate-900 font-sans py-20 lg:py-20 overflow-hidden border-t border-slate-100">
       
       {/* Injecting pure CSS directly to bypass configuration issues */}
       <style dangerouslySetInnerHTML={{__html: `

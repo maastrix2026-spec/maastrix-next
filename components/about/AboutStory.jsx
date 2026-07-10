@@ -12,7 +12,7 @@ export default function AboutStory() {
   ];
 
   return (
-    <section className="relative bg-white text-slate-900 font-sans py-16 lg:py-28 overflow-hidden">
+    <section className="relative bg-white text-slate-900 font-sans py-12 lg:pt-10 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -47,10 +47,10 @@ export default function AboutStory() {
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
               <p>
-                We didn’t build Maastrix Solutions to follow standard web templates—we engineered it to deliver true operational scale. Since our inception, our focus has been helping enterprises transcend generic overpromises and build custom applications designed to withstand actual traffic and performance loads.
+                Maastrix Solutions was founded to move beyond the limitations of pre-packaged software, focusing instead on engineering systems built for true operational scale. We partner with organizations to bypass generic solutions and instead develop high-performance applications designed to handle demanding traffic and complex data requirements with ease.
               </p>
               <p>
-                Today, we operate as a precision squad of dedicated developers, mobile engineers, and systems architects collaborating globally across the US, UK, Canada, and beyond to ensure code stability and rapid velocity.
+                Today, we function as a collaborative global team of expert architects, engineers, and developers stationed across the US, UK, Canada, and beyond. This distributed approach allows us to maintain exceptional code quality and deployment velocity, ensuring our partners receive stable, future-proof software that drives measurable business outcomes.
               </p>
             </div>
 

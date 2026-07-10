@@ -12,10 +12,10 @@ const partners = [
 
 export default function StrategicPartners() {
   return (
-    <section className="py-12 sm:py-16 bg-white border-y border-slate-100">
+    <section className="py-12 sm:py-16 bg-white border-y lg:py-10 border-slate-100">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Heading */}
-        <h2 className="text-center text-sm font-bold tracking-widest text-slate-400 uppercase">
+        <h2 className="text-center text-sm font-bold tracking-widest text-slate-800 uppercase">
           Empowered by our Strategic Partners
         </h2>
         
