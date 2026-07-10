@@ -42,7 +42,7 @@ export default function AboutImageGrid() {
       </div>
 
       <div className="absolute -bottom-8 left-8 hidden rounded-2xl border border-cyan-400/30 bg-slate-950/80 p-5 shadow-[0_0_50px_rgba(34,211,238,0.18)] backdrop-blur-xl sm:block">
-        <p className="text-4xl font-black text-cyan-300">17+</p>
+        <p className="text-4xl font-black text-cyan-300">22+</p>
         <p className="mt-1 text-sm font-semibold text-slate-300">
           Years Experience
         </p>

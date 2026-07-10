@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 export const stats = [
-  { value: "17+", label: "Years Experience" },
+  { value: "22+", label: "Years Experience" },
   { value: "2004", label: "Founded" },
   { value: "10+", label: "Industries Served" },
   { value: "Global", label: "Delivery Model" },

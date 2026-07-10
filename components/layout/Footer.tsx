@@ -45,7 +45,7 @@ export default function Footer() {
               </div>
               <div className="min-w-0">
                 <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-0.5">{item.title}</h3>
-                <p className="text-[12px] text-gray-400 group-hover:text-white transition-colors truncate">{item.val}</p>
+                <p className="text-[12px] text-gray-400 group-hover:text-white transition-colors ">{item.val}</p>
               </div>
             </a>
           ))}

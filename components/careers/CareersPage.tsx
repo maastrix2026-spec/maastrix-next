@@ -85,7 +85,7 @@ export default function CareersPage() {
             {/* Right Contextual Asymmetric Metric Card Column */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
-                <h3 className="text-2xl font-black text-blue-400">17+ Yrs</h3>
+                <h3 className="text-2xl font-black text-blue-400">22+ Yrs</h3>
                 <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Industry Trust</p>
               </div>
               <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">

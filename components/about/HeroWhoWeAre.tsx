@@ -38,7 +38,7 @@ export default function HeroWhoWeAre() {
           <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
             Over{" "}
             <span className="inline-block bg-gradient-to-r from-blue-500 to-cyan-300 bg-clip-text text-7xl text-transparent sm:text-8xl lg:text-9xl">
-              17
+              22
             </span>{" "}
             years experience
             <span className="text-blue-500">.</span>

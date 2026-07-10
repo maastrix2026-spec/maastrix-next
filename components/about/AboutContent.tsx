@@ -21,7 +21,7 @@ export default function AboutContent() {
       </p>
 
       <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400">
-        With more than 17 years of industry experience, we combine AI
+        With more than 22 years of industry experience, we combine AI
         engineering, enterprise architecture, UI/UX, cloud technologies and
         full-stack development to build secure, scalable and future-ready
         solutions.

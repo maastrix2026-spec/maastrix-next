@@ -59,7 +59,7 @@ export default function ServiceGridSection() {
       </div>
 
       {/* =========================================================================
-          SECTION 1: 17-YEAR CORPORATION LEGACY BRIEFING
+          SECTION 1: 22-YEAR CORPORATION LEGACY BRIEFING
           ========================================================================= */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -68,7 +68,7 @@ export default function ServiceGridSection() {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100/80">
               <Award className="h-3.5 w-3.5 text-blue-600" />
               <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                17 Years of Turning Code into Competitive Advantage
+                22 Years of Turning Code into Competitive Advantage
               </span>
             </div>
 
@@ -80,7 +80,7 @@ export default function ServiceGridSection() {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-2xl">
-              For 17 years, our elite development squads have helped enterprises launch, scale, and secure digital products at speed. We architect resilient backends, pixel-perfect cross-platform frontends, and custom enterprise systems that perform flawlessly under global traffic — from day one.
+              For 22 years, our elite development squads have helped enterprises launch, scale, and secure digital products at speed. We architect resilient backends, pixel-perfect cross-platform frontends, and custom enterprise systems that perform flawlessly under global traffic — from day one.
             </p>
 
             {/* Quick Micro Capabilities Highlights */}

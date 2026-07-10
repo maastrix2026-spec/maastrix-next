@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: "Maastrix Solutions - Enterprise AI & Digital Transformation",
-  description: "Web application and IT solutions provider with over 17 years of expertise.",
+  description: "Web application and IT solutions provider with over 22 years of expertise.",
 };
 
 export default function RootLayout({

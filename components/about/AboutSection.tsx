@@ -9,6 +9,7 @@ import {
   Workflow,
   ArrowRight,
 } from "lucide-react";
+import Image from "next/image";
 
 const AboutSection = () => {
   const highlights = [
@@ -35,9 +36,9 @@ const AboutSection = () => {
   ];
 
   const stats = [
-    { value: "17+", label: "Years Experience" },
+    { value: "22+", label: "Years Experience" },
     { value: "AI", label: "First Mindset" },
-    { value: "10+", label: "Industries Served" },
+    { value: "20+", label: "Industries Served" },
     { value: "360°", label: "Digital Delivery" },
   ];
 
@@ -80,7 +81,7 @@ const AboutSection = () => {
             </p>
 
             <p className="mt-4 max-w-2xl text-sm leading-7 text-gray-400 sm:text-base">
-              For over 17 years, we have helped organizations build web
+              For over 22 years, we have helped organizations build web
               applications, SaaS products, enterprise platforms and automation
               systems that create measurable business value.
             </p>
@@ -121,7 +122,7 @@ const AboutSection = () => {
             <div className="relative border border-white/10 bg-black/30 p-4 backdrop-blur-sm">
               <div className="grid grid-cols-2 gap-4">
                 <div className="h-64 overflow-hidden border border-white/10">
-                  <img
+                  <Image
                     src="/assets/images/about-1.jpg"
                     alt="Maastrix enterprise team"
                     className="h-full w-full object-cover grayscale transition duration-700 hover:scale-110 hover:grayscale-0"
@@ -129,7 +130,7 @@ const AboutSection = () => {
                 </div>
 
                 <div className="mt-10 h-64 overflow-hidden border border-white/10">
-                  <img
+                  <Image
                     src="/assets/images/about-2.jpg"
                     alt="AI software engineering"
                     className="h-full w-full object-cover grayscale transition duration-700 hover:scale-110 hover:grayscale-0"
@@ -137,7 +138,7 @@ const AboutSection = () => {
                 </div>
 
                 <div className="-mt-8 h-64 overflow-hidden border border-white/10">
-                  <img
+                  <Image
                     src="/assets/images/about-3.jpg"
                     alt="Cloud digital transformation"
                     className="h-full w-full object-cover grayscale transition duration-700 hover:scale-110 hover:grayscale-0"
@@ -145,7 +146,7 @@ const AboutSection = () => {
                 </div>
 
                 <div className="h-64 overflow-hidden border border-white/10">
-                  <img
+                  <Image
                     src="/assets/images/about-4.jpg"
                     alt="Enterprise digital platform"
                     className="h-full w-full object-cover grayscale transition duration-700 hover:scale-110 hover:grayscale-0"
@@ -154,7 +155,7 @@ const AboutSection = () => {
               </div>
 
               <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-blue-500 bg-blue-600 text-center shadow-[0_0_60px_rgba(37,99,235,0.55)]">
-                <span className="text-3xl font-extrabold">17+</span>
+                <span className="text-3xl font-extrabold">22+</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider">
                   Years
                 </span>

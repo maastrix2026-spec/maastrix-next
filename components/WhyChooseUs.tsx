@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
   ];
 
   const metrics: MetricItem[] = [
-    { value: "17+", label: "Years Experience", subtext: "Enterprise execution history", icon: <Building2 className="h-4 w-4 text-blue-600" /> },
+    { value: "22+", label: "Years Experience", subtext: "Enterprise execution history", icon: <Building2 className="h-4 w-4 text-blue-600" /> },
     { value: "100%", label: "Client Handshake", subtext: "Guaranteed SLA uptime parameters", icon: <Award className="h-4 w-4 text-blue-600" /> },
     { value: "24/7", label: "Active Pipelines", subtext: "Automated structural infrastructure", icon: <Users2 className="h-4 w-4 text-blue-600" /> }
   ];
@@ -122,7 +122,7 @@ export default function WhyChooseUs() {
 
             <div className="pt-2">
               <a 
-                href="/contact" 
+                href="/get-a-quote" 
                 className="inline-flex items-center gap-2.5 px-6 py-3 bg-slate-950 hover:bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-md transition-all duration-300 group"
               >
                 Initiate Architecture Briefing

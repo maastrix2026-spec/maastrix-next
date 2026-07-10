@@ -26,7 +26,7 @@ const HeroSection = () => {
           Powerful IT & Web <br /> Application <span className="text-blue-500">Solutions</span>.
         </h1>
         <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl font-medium tracking-wide">
-          Empowering global enterprises for over 17 years with cutting-edge software engineering and digital transformation.
+          Empowering global enterprises for over 22 years with cutting-edge software engineering and digital transformation.
         </p>
       </div>
 
