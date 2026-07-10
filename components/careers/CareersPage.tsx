@@ -56,19 +56,19 @@ export default function CareersPage() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
                 <Users className="h-3.5 w-3.5 text-blue-400" />
                 <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400">
-                  Join Our Tech Squad
+                  JOIN OUR ENGINEERING TEAM
                 </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15]">
-                Build Systems That <br />
+                Build Your Career. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500">
-                  Move The Needle.
+                  Build Tomorrow&apos;s Technology.
                 </span>
               </h1>
 
               <p className="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed font-medium">
-                We don&apos;t settle for average codebases or legacy development habits. We run a dedicated team of software professionals shaping reliable backends, fluid mobile portals, and innovative AI solutions.
+                Join Maastrix Solutions and collaborate with talented engineers, designers, and innovators to develop AI-powered applications, enterprise software, cloud-native platforms, ecommerce solutions, and intelligent digital products for businesses around the world. Grow your skills, embrace new technologies, and make a lasting impact.
               </p>
 
               <div className="pt-2">

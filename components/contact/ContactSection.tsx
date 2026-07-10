@@ -2,33 +2,88 @@
 
 import React, { useState } from "react";
 import {
-  Send,
+  AlertCircle,
+  CheckCircle2,
+  Globe,
+  Mail,
   MapPin,
   Phone,
-  Mail,
-  Globe,
-  CheckCircle2,
-  AlertCircle
+  Send,
 } from "lucide-react";
 import { sendCareerMailAction } from "@/actions/sendCareerMailAction";
-import { sendQuoteMailAction } from "@/actions/sendQuoteMailAction";
 import { sendContactMailAction } from "@/actions/sendContactMailAction";
+import { sendQuoteMailAction } from "@/actions/sendQuoteMailAction";
+
+type InquiryCategory = "project" | "career" | "general";
+type PreferredContact = "email" | "phone";
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+interface ContactFormState {
+  category: InquiryCategory;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  message: string;
+  preferredContact: PreferredContact;
+}
+
+const INITIAL_FORM_STATE: ContactFormState = {
+  category: "project",
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  message: "",
+  preferredContact: "email",
+};
+
+const inquiryCategories: Array<{
+  id: InquiryCategory;
+  label: string;
+  description: string;
+}> = [
+  {
+    id: "project",
+    label: "Launch Project",
+    description: "Hire our core development team",
+  },
+  {
+    id: "career",
+    label: "Join Team / Career",
+    description: "Connect with our HR team",
+  },
+  {
+    id: "general",
+    label: "General Inquiry",
+    description: "Consultation and strategy",
+  },
+];
+
+const inputClassName =
+  "w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3.5 text-base text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-600/10 sm:text-sm";
 
 export default function ContactSection() {
-  const [formState, setFormState] = useState({
-    category: "project", // project, career, general
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    message: "",
-    preferredContact: "email"
-  });
+  const [formState, setFormState] =
+    useState<ContactFormState>(INITIAL_FORM_STATE);
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
 
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const updateFormField = <K extends keyof ContactFormState>(
+    field: K,
+    value: ContactFormState[K],
+  ) => {
+    setFormState((current) => ({ ...current, [field]: value }));
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    if (formStatus === "error") {
+      setFormStatus("idle");
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (formStatus === "submitting") return;
+
     setFormStatus("submitting");
 
     try {
@@ -49,7 +104,7 @@ export default function ContactSection() {
           phone: formState.phone,
           address: formState.address,
           message: formState.message,
-          preferredContact: formState.preferredContact as "email" | "phone",
+          preferredContact: formState.preferredContact,
         });
       } else {
         result = await sendContactMailAction({
@@ -58,24 +113,14 @@ export default function ContactSection() {
           phone: formState.phone,
           address: formState.address,
           message: formState.message,
-          preferredContact: formState.preferredContact as "email" | "phone",
+          preferredContact: formState.preferredContact,
         });
       }
 
       if (result.success) {
         setFormStatus("success");
-
-        setFormState({
-          category: "project",
-          name: "",
-          email: "",
-          phone: "",
-          address: "",
-          message: "",
-          preferredContact: "email",
-        });
-
-        setTimeout(() => setFormStatus("idle"), 5000);
+        setFormState(INITIAL_FORM_STATE);
+        window.setTimeout(() => setFormStatus("idle"), 5000);
       } else {
         setFormStatus("error");
       }
@@ -86,263 +131,348 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen bg-white text-slate-900 font-sans overflow-hidden py-20 lg:py-28">
-
-      {/* PURE PARALLAX BACKDROP ENGINE */}
+    <section
+      id="contact"
+      className="relative isolate overflow-hidden bg-white py-14 font-sans text-slate-900 sm:py-16 md:py-20 lg:py-24 xl:py-28"
+    >
+      {/* Background texture */}
       <div
-        className="absolute inset-0 bg-fixed bg-cover bg-center opacity-[0.03] pointer-events-none z-0"
-        style={{ backgroundImage: `url('/assets/images/about.jpg')` }}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center opacity-[0.03] md:bg-fixed"
+        style={{ backgroundImage: "url('/assets/images/about.jpg')" }}
       />
 
-      {/* Decorative Floating Vector Parallax Blobs */}
-      <div className="absolute top-10 left-[-10%] w-[40rem] h-[40rem] bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl opacity-70 pointer-events-none z-0" />
-      <div className="absolute bottom-10 right-[-10%] w-[40rem] h-[40rem] bg-gradient-to-bl from-indigo-600/10 to-transparent rounded-full blur-3xl opacity-70 pointer-events-none z-0" />
+      {/* Decorative ambient blobs */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-8 -z-10 h-72 w-72 rounded-full bg-gradient-to-tr from-blue-600/10 to-transparent blur-3xl sm:h-96 sm:w-96 lg:h-[40rem] lg:w-[40rem]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-24 -right-40 -z-10 h-72 w-72 rounded-full bg-gradient-to-bl from-indigo-600/10 to-transparent blur-3xl sm:h-96 sm:w-96 lg:h-[40rem] lg:w-[40rem]"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-
-          {/* LEFT SIDE: BRIEFING & CORPORATE CHANNELS (Spans 5/12) */}
-          <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-32">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-start gap-10 md:gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
+          {/* Contact information */}
+          <div className="min-w-0 space-y-7 lg:col-span-5 xl:sticky xl:top-24">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-4 py-1.5 rounded-full">
+              <span className="inline-flex rounded-full bg-blue-50 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600 sm:px-4 sm:text-xs sm:tracking-widest">
                 Contact Workspace
               </span>
-              <h2 className="text-4xl font-black tracking-tight text-slate-950 mt-4 leading-tight">
-                Have A Project <br />in Mind? Say Hi!
+
+              <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.08] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-[2.65rem] xl:text-5xl">
+                Have a project in mind? Say hi!
               </h2>
-              <p className="mt-4 text-sm text-slate-800 leading-relaxed max-w-md">
-                Please give us a call, drop us an email, or fill out the digital transformation intake form and our engineering architects will map out your blueprint.
+
+              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-[15px]">
+                Whether you&apos;re planning an AI-powered solution, enterprise
+                application, CRM implementation, ecommerce platform, or custom
+                software, our team is ready to understand your goals and
+                recommend the right technology approach.
               </p>
             </div>
 
-            {/* Structured Info Cards */}
-            <div className="space-y-4">
-              {/* Address */}
-              <div className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100/80">
-                <div className="p-2.5 h-10 w-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="h-5 w-5" />
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              <div className="flex min-w-0 items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50/90 p-4 sm:gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <MapPin className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Address:</h4>
-                  <p className="text-sm font-semibold text-slate-800 mt-0.5 leading-relaxed">
-                    MBM Silver, Plot L3/60, 3rd Floor, Acharya Vihar, Bhubaneswar, Odisha, India. Pin :751013
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Address
+                  </h3>
+                  <p className="mt-1 break-words text-sm font-semibold leading-6 text-slate-800">
+                    MBM Silver, Plot L3/60, 3rd Floor, Acharya Vihar,
+                    Bhubaneswar, Odisha, India, 751013
                   </p>
                 </div>
               </div>
 
-              {/* Email */}
-              <a href="mailto:info@maastrixsolutions.com" className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100/80 hover:border-blue-600/30 transition-all group block">
-                <div className="p-2.5 h-10 w-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                  <Mail className="h-5 w-5" />
+              <a
+                href="mailto:info@maastrixsolutions.com"
+                className="group flex min-w-0 items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50/90 p-4 transition hover:-translate-y-0.5 hover:border-blue-600/30 hover:bg-white hover:shadow-lg hover:shadow-slate-200/60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 sm:gap-4"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform group-hover:scale-105">
+                  <Mail className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Email:</h4>
-                  <p className="text-sm font-bold text-slate-800 mt-0.5 group-hover:text-blue-600 transition-colors">
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Email
+                  </h3>
+                  <p className="mt-1 break-all text-sm font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                     info@maastrixsolutions.com
                   </p>
                 </div>
               </a>
 
-              {/* Phone */}
-              <a href="tel:+916742540245" className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100/80 hover:border-blue-600/30 transition-all group block">
-                <div className="p-2.5 h-10 w-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                  <Phone className="h-5 w-5" />
+              <a
+                href="tel:+916742540245"
+                className="group flex min-w-0 items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50/90 p-4 transition hover:-translate-y-0.5 hover:border-blue-600/30 hover:bg-white hover:shadow-lg hover:shadow-slate-200/60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 sm:gap-4"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform group-hover:scale-105">
+                  <Phone className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Call:</h4>
-                  <p className="text-sm font-bold text-slate-800 mt-0.5 group-hover:text-blue-600 transition-colors">
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Call
+                  </h3>
+                  <p className="mt-1 break-words text-sm font-bold leading-6 text-slate-800 transition-colors group-hover:text-blue-600">
                     +91-674-2540245 / 2567340
                   </p>
                 </div>
               </a>
 
-              {/* Web */}
-              <div className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100/80">
-                <div className="p-2.5 h-10 w-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
-                  <Globe className="h-5 w-5" />
+              <a
+                href="https://www.maastrixsolutions.com"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex min-w-0 items-start gap-3 rounded-2xl border border-slate-100 bg-slate-50/90 p-4 transition hover:-translate-y-0.5 hover:border-blue-600/30 hover:bg-white hover:shadow-lg hover:shadow-slate-200/60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 sm:gap-4"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform group-hover:scale-105">
+                  <Globe className="h-5 w-5" aria-hidden="true" />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Web:</h4>
-                  <p className="text-sm font-semibold text-slate-800 mt-0.5">
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    Web
+                  </h3>
+                  <p className="mt-1 break-all text-sm font-semibold text-slate-800 transition-colors group-hover:text-blue-600">
                     www.maastrixsolutions.com
                   </p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
-          {/* RIGHT SIDE: PREMIUM FORM ARCHITECTURE (Spans 7/12) */}
-          <div className="lg:col-span-7 relative bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-2xl p-8 md:p-10 shadow-xl shadow-slate-100">
-
-            {/* Smooth Overlay Success Window */}
-            <div className={`absolute inset-0 bg-white/95 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center p-8 transition-all duration-500 z-20 ${formStatus === "success" ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95 pointer-events-none"}`}>
-              <div className="p-3 rounded-full bg-emerald-50 text-emerald-500 mb-4 animate-bounce">
-                <CheckCircle2 className="h-8 w-8" />
+          {/* Contact form */}
+          <div className="relative min-w-0 overflow-hidden rounded-2xl border border-slate-200/70 bg-white/90 p-4 shadow-xl shadow-slate-200/50 backdrop-blur-md sm:p-6 md:p-8 lg:col-span-7 lg:p-8 xl:p-10">
+            <div
+              role="status"
+              aria-live="polite"
+              className={`absolute inset-0 z-20 flex flex-col items-center justify-center rounded-2xl bg-white/95 p-6 text-center backdrop-blur-sm transition-all duration-500 sm:p-8 ${
+                formStatus === "success"
+                  ? "visible scale-100 opacity-100"
+                  : "invisible pointer-events-none scale-95 opacity-0"
+              }`}
+            >
+              <div className="mb-4 rounded-full bg-emerald-50 p-3 text-emerald-500">
+                <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
               </div>
-              <h3 className="text-lg font-bold text-slate-950">Intake Document Transmitted</h3>
-              <p className="text-sm text-slate-500 text-center max-w-sm mt-2">
-                Thank you. Your request parameter map has been cataloged. An internal stakeholder will connect via your preferred communication choice.
+              <h3 className="text-lg font-bold text-slate-950 sm:text-xl">
+                Request submitted successfully
+              </h3>
+              <p className="mt-2 max-w-sm text-sm leading-6 text-slate-500">
+                Thank you. Our team has received your request and will contact
+                you through your preferred communication method.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Web3Forms Honeypot Anti-Spam */}
-              {/* <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} /> */}
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+              <fieldset className="space-y-3">
+                <legend className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Identify purpose / category
+                </legend>
 
-              {/* INQUIRY CATEGORY BAR */}
-              <div className="space-y-3">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 block">
-                  Identify Purpose / Category
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {[
-                    { id: "project", label: "Launch Project", desc: "Hire our core dev team" },
-                    { id: "career", label: "Join Team / Career", desc: "Connect with HR team" },
-                    { id: "general", label: "General Inquiry", desc: "Consultation & strategy" }
-                  ].map((cat) => (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => setFormState({ ...formState, category: cat.id })}
-                      className={`p-4 rounded-xl text-left border transition-all duration-200 flex flex-col justify-between ${formState.category === cat.id
-                        ? "border-blue-600 bg-blue-50/[0.02] ring-2 ring-blue-600/20"
-                        : "border-slate-200 bg-white hover:border-slate-300"
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+                  {inquiryCategories.map((category) => {
+                    const isSelected = formState.category === category.id;
+
+                    return (
+                      <button
+                        key={category.id}
+                        type="button"
+                        aria-pressed={isSelected}
+                        onClick={() => updateFormField("category", category.id)}
+                        className={`min-h-[88px] rounded-xl border p-4 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 ${
+                          isSelected
+                            ? "border-blue-600 bg-blue-50/70 ring-2 ring-blue-600/15"
+                            : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm"
                         }`}
-                    >
-                      <span className={`text-xs font-bold ${formState.category === cat.id ? "text-blue-600" : "text-slate-800"}`}>
-                        {cat.label}
-                      </span>
-                      <span className="text-[13px] text-slate-800 mt-1 leading-snug">
-                        {cat.desc}
-                      </span>
-                    </button>
-                  ))}
+                      >
+                        <span
+                          className={`block text-sm font-bold md:text-xs xl:text-sm ${
+                            isSelected ? "text-blue-600" : "text-slate-800"
+                          }`}
+                        >
+                          {category.label}
+                        </span>
+                        <span className="mt-1.5 block text-xs leading-5 text-slate-500">
+                          {category.description}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
-              </div>
+              </fieldset>
 
-              {/* Name & Email Row */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-slate-600">Name*</label>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+                <div className="min-w-0 space-y-1.5">
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  >
+                    Name*
+                  </label>
                   <input
-                    type="text"
                     id="name"
+                    type="text"
                     required
+                    autoComplete="name"
                     value={formState.name}
-                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    onChange={(event) =>
+                      updateFormField("name", event.target.value)
+                    }
                     placeholder="Enter your name"
-                    className="w-full rounded-lg bg-slate-50/50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
+                    className={inputClassName}
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-slate-600">Email*</label>
+
+                <div className="min-w-0 space-y-1.5">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                  >
+                    Email*
+                  </label>
                   <input
-                    type="email"
                     id="email"
+                    type="email"
                     required
+                    autoComplete="email"
+                    inputMode="email"
                     value={formState.email}
-                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    onChange={(event) =>
+                      updateFormField("email", event.target.value)
+                    }
                     placeholder="Enter your email"
-                    className="w-full rounded-lg bg-slate-50/50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
+                    className={inputClassName}
                   />
                 </div>
               </div>
 
-              {/* Phone Input */}
               <div className="space-y-1.5">
-                <label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-slate-600">Phone / Mobile #</label>
+                <label
+                  htmlFor="phone"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                >
+                  Phone / mobile number
+                </label>
                 <input
-                  type="tel"
                   id="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
                   value={formState.phone}
-                  onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                  placeholder="Enter Your Phone/Mobile #"
-                  className="w-full rounded-lg bg-slate-50/50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all"
+                  onChange={(event) =>
+                    updateFormField("phone", event.target.value)
+                  }
+                  placeholder="Enter your phone number"
+                  className={inputClassName}
                 />
               </div>
 
-
-              {/* Physical Address Textarea */}
               <div className="space-y-1.5">
-                <label htmlFor="address" className="text-xs font-bold uppercase tracking-wider text-slate-600">Your Address</label>
+                <label
+                  htmlFor="address"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                >
+                  Your address
+                </label>
                 <textarea
                   id="address"
                   rows={2}
+                  autoComplete="street-address"
                   value={formState.address}
-                  onChange={(e) => setFormState({ ...formState, address: e.target.value })}
-                  placeholder="Your Address.."
-                  className="w-full rounded-lg bg-slate-50/50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all resize-none"
+                  onChange={(event) =>
+                    updateFormField("address", event.target.value)
+                  }
+                  placeholder="Enter your address"
+                  className={`${inputClassName} min-h-24 resize-y`}
                 />
               </div>
 
-              {/* Core Messages Textarea */}
               <div className="space-y-1.5">
-                <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-600">Your Messages</label>
+                <label
+                  htmlFor="message"
+                  className="text-xs font-bold uppercase tracking-wider text-slate-600"
+                >
+                  Your message
+                </label>
                 <textarea
                   id="message"
-                  rows={4}
+                  rows={5}
                   value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  placeholder="Your Messages.."
-                  className="w-full rounded-lg bg-slate-50/50 border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white transition-all resize-none"
+                  onChange={(event) =>
+                    updateFormField("message", event.target.value)
+                  }
+                  placeholder="Tell us about your requirement"
+                  className={`${inputClassName} min-h-36 resize-y`}
                 />
               </div>
 
-              {/* Preferred Communication Method Radio Toggles */}
-              <div className="space-y-2 border-t border-slate-100 pt-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">
-                  Preferred Method Of Contact
-                </span>
-                <div className="flex gap-6 mt-1">
-                  <label className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer select-none">
-                    <input
-                      type="radio"
-                      name="preferredContact"
-                      value="email"
-                      checked={formState.preferredContact === "email"}
-                      onChange={() => setFormState({ ...formState, preferredContact: "email" })}
-                      className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-600 focus:ring-offset-0 cursor-pointer"
-                    />
-                    Email
-                  </label>
-                  <label className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer select-none">
-                    <input
-                      type="radio"
-                      name="preferredContact"
-                      value="phone"
-                      checked={formState.preferredContact === "phone"}
-                      onChange={() => setFormState({ ...formState, preferredContact: "phone" })}
-                      className="h-4 w-4 text-blue-600 border-slate-300 focus:ring-blue-600 focus:ring-offset-0 cursor-pointer"
-                    />
-                    Phone
-                  </label>
-                </div>
-              </div>
+              <fieldset className="space-y-3 border-t border-slate-100 pt-5">
+                <legend className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  Preferred method of contact
+                </legend>
 
-              {/* Error Fallback Banner */}
+                <div className="flex flex-wrap gap-x-6 gap-y-3">
+                  {(["email", "phone"] as PreferredContact[]).map((method) => (
+                    <label
+                      key={method}
+                      className="inline-flex min-h-11 cursor-pointer select-none items-center gap-2 rounded-lg px-1 text-sm font-semibold capitalize text-slate-700"
+                    >
+                      <input
+                        type="radio"
+                        name="preferredContact"
+                        value={method}
+                        checked={formState.preferredContact === method}
+                        onChange={() =>
+                          updateFormField("preferredContact", method)
+                        }
+                        className="h-4 w-4 cursor-pointer border-slate-300 text-blue-600 focus:ring-blue-600 focus:ring-offset-0"
+                      />
+                      {method}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
               {formStatus === "error" && (
-                <div className="p-4 bg-rose-50 border border-rose-100 rounded-xl flex items-center gap-3 text-rose-700 text-xs font-bold">
-                  <AlertCircle className="h-4 w-4 shrink-0" />
-                  <span>Submission failed. Please try again or contact us directly by email.</span>
+                <div
+                  role="alert"
+                  className="flex items-start gap-3 rounded-xl border border-rose-100 bg-rose-50 p-4 text-xs font-bold leading-5 text-rose-700 sm:items-center"
+                >
+                  <AlertCircle
+                    className="mt-0.5 h-4 w-4 shrink-0 sm:mt-0"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    Submission failed. Please try again or contact us directly
+                    by email.
+                  </span>
                 </div>
               )}
 
-              {/* Submit Action Control */}
               <button
                 type="submit"
                 disabled={formStatus === "submitting"}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 px-6 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/20 group cursor-pointer disabled:cursor-not-allowed"
+                className="group inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3.5 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition duration-300 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/25 disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none sm:px-6 sm:py-4 sm:tracking-widest"
               >
                 {formStatus === "submitting" ? (
-                  "Transmitting Brief..."
+                  <>
+                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                    Submitting...
+                  </>
                 ) : (
                   <>
-                    Submit Request Brief
-                    <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                    Submit request brief
+                    <Send
+                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+                      aria-hidden="true"
+                    />
                   </>
                 )}
               </button>
-
             </form>
           </div>
         </div>

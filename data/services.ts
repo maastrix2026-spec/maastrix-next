@@ -22,7 +22,7 @@ export const servicesData: ServiceItem[] = [
     title: "Enterprise Application Services",
     description: "Engineering robust, scalable cross-platform mobile experiences utilizing Expo and React Native, managed through automated deployment tracks for high operational performance.",
     iconName: "smartphone",
-    keywords: ["React Native", "Expo", "Cross-Platform", "CI/CD"],
+    keywords: ["Android", "ios", "Cross-Platform", "CI/CD"],
     imgSrc: "/assets/images/services/mobile.webp"
   },
   {

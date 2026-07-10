@@ -176,7 +176,7 @@ export default function ServiceGridSection() {
                       {service.keywords?.map((tag: string, i: number) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-600 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-700 transition-all duration-300"
+                          className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-wider  group-hover:bg-blue-50 group-hover:border-blue-200 text-blue-700 transition-all duration-300"
                         >
                           {tag}
                         </span>
