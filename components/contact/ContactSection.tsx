@@ -162,7 +162,7 @@ export default function ContactSection() {
               </span>
 
               <h2 className="mt-4 max-w-xl text-3xl font-black leading-[1.08] tracking-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-[2.65rem] xl:text-5xl">
-                Have a project in mind? Say hi!
+                Let&apos;s Discuss Your Next Digital Initiative.
               </h2>
 
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-[15px]">
