@@ -6,9 +6,9 @@
 
 :root {
   /* Brand Core Design Tokens (Maastrix Premium Blue & Deep Slate) */
-  --color-primary: #0066ff;       /* Pure Brand Blue */
+  --color-primary: #0066ff; /* Pure Brand Blue */
   --color-primary-hover: #0052cc; /* Darker Blue for hover states */
-  --color-secondary: #0f172a;     /* Deep Slate Neutral */
+  --color-secondary: #0f172a; /* Deep Slate Neutral */
 
   /* Layout Surfaces */
   --color-surface-light: #f8fafc; /* Crisp, clean Accenture-style light gray */
@@ -90,7 +90,8 @@
   --color-surface-light: var(--color-surface-light);
   --color-surface-white: var(--color-surface-white);
   --color-border-subtle: var(--color-border-subtle);
-  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite
+    alternate;
   --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
@@ -131,30 +132,36 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   @keyframes shimmer-slide {
-  to {
-    transform: translate(calc(100cqw - 100%), 0);
+    to {
+      transform: translate(calc(100cqw - 100%), 0);
     }
   }
   @keyframes spin-around {
-  0% {
-    transform: translateZ(0) rotate(0);
+    0% {
+      transform: translateZ(0) rotate(0);
     }
-  15%, 35% {
-    transform: translateZ(0) rotate(90deg);
+    15%,
+    35% {
+      transform: translateZ(0) rotate(90deg);
     }
-  65%, 85% {
-    transform: translateZ(0) rotate(270deg);
+    65%,
+    85% {
+      transform: translateZ(0) rotate(270deg);
     }
-  100% {
-    transform: translateZ(0) rotate(360deg);
+    100% {
+      transform: translateZ(0) rotate(360deg);
     }
   }
 }
 
 /* Fluid Hardware-Accelerated Marquee loop track */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee-loop {
@@ -164,8 +171,12 @@
 /* src/app/globals.css or your main styles.css file */
 @layer utilities {
   @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .animate-marquee {
@@ -216,5 +227,76 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+.client-marquee-track {
+  animation: client-marquee 35s linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.client-marquee-group {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@keyframes client-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Pause only on devices that actually support hover */
+@media (hover: hover) and (pointer: fine) {
+  .client-marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Slightly faster on smaller screens */
+@media (max-width: 640px) {
+  .client-marquee-track {
+    animation-duration: 24s;
+  }
+}
+
+/* Respect accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes client-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.client-marquee {
+  animation: client-marquee-scroll 38s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.client-marquee:hover {
+  animation-play-state: paused;
+}
+@media (max-width: 640px) {
+  .client-marquee {
+    animation-duration: 26s;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee {
+    animation: none;
+    transform: none;
   }
 }
