@@ -2,16 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { 
-  ArrowUpRight, 
-  Code2, 
-  ShoppingBag, 
-  Laptop, 
-  Search, 
-  BrainCircuit, 
-  Smartphone, 
-  Award, 
-  Layers 
+import {
+  ArrowUpRight,
+  Code2,
+  ShoppingBag,
+  Laptop,
+  Search,
+  BrainCircuit,
+  Smartphone,
+  Award,
+  Layers
 } from "lucide-react";
 import { servicesData, ServiceItem } from "@/data/services";
 
@@ -39,17 +39,17 @@ export default function ServiceGridSection() {
 
   return (
     <section id="services-list" className="relative bg-white text-slate-900 font-sans py-24 overflow-hidden">
-      
+
       {/* =========================================================================
           PREMIUM PARALLAX DECORATIVE ACCENTS
           ========================================================================= */}
-      <div 
+      <div
         className="absolute top-[12%] left-[-8%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-500/5 to-indigo-500/5 blur-[120px] pointer-events-none will-change-transform"
         style={{ transform: `translateY(${offsetY * 0.1}px)` }}
       />
-      
+
       {/* Clean Geometric Grid Dot Accent */}
-      <div 
+      <div
         className="absolute top-[20%] right-12 grid grid-cols-4 gap-2.5 opacity-20 pointer-events-none will-change-transform hidden lg:grid"
         style={{ transform: `translateY(${-offsetY * 0.06}px)` }}
       >
@@ -63,31 +63,31 @@ export default function ServiceGridSection() {
           ========================================================================= */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 mb-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
+
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100/80">
               <Award className="h-3.5 w-3.5 text-blue-600" />
               <span className="text-[10px] font-black uppercase tracking-widest text-blue-600">
-                17 Years of Engineering Fluency
+                17 Years of Turning Code into Competitive Advantage
               </span>
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.1]">
               Engineered Software Solutions <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 Driven by Elite Technical Teams.
               </span>
             </h2>
-            
+
             <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed max-w-2xl">
-              For nearly two decades, our specialized development squads have delivered deterministic product velocity to businesses moving into digital spaces. We coordinate highly secure backends, responsive cross-platform architectures, and custom corporate systems engineered to satisfy your global users completely.
+              For 17 years, our elite development squads have helped enterprises launch, scale, and secure digital products at speed. We architect resilient backends, pixel-perfect cross-platform frontends, and custom enterprise systems that perform flawlessly under global traffic — from day one.
             </p>
 
             {/* Quick Micro Capabilities Highlights */}
             <div className="grid grid-cols-2 gap-4 max-w-lg pt-2">
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
                 <h4 className="text-sm font-black text-slate-950">Expertise-Led Squads</h4>
-                <p className="text-sm text-slate-500 mt-1">Vetted backend, front-end, and mobile developers.</p>
+                <p className="text-sm text-slate-500 mt-1">Vetted backend, front-end, and mobile developers with automation.</p>
               </div>
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
                 <h4 className="text-sm font-black text-slate-950">Predictable Velocity</h4>
@@ -118,7 +118,7 @@ export default function ServiceGridSection() {
           ========================================================================= */}
       <div className="bg-gradient-to-b from-slate-50/60 to-white border-t border-slate-200/50 py-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          
+
           <div className="text-center max-w-2xl mx-auto space-y-4 mb-20">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200">
               <Layers className="h-3.5 w-3.5 text-slate-600" />
@@ -154,6 +154,7 @@ export default function ServiceGridSection() {
                 </div>
 
                 {/* Content Processing Matrix Block */}
+                {/* Content Processing Matrix Block */}
                 <div className="flex flex-col justify-between flex-1 py-1.5">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
@@ -164,23 +165,25 @@ export default function ServiceGridSection() {
                         {service.title}
                       </h4>
                     </div>
-                    
-                    <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed line-clamp-3">
+
+                    {/* REMOVED line-clamp-3 HERE */}
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed">
                       {service.description}
                     </p>
+
+                    {/* INTERACTIVE KEYWORDS ROW */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {service.keywords?.map((tag: string, i: number) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-600 group-hover:bg-blue-50 group-hover:border-blue-200 group-hover:text-blue-700 transition-all duration-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  {/* <div className="pt-5 sm:pt-0">
-                    <a
-                      href={`/services/${service.id}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-black text-slate-900 group-hover:text-blue-600 uppercase tracking-widest transition-colors duration-200"
-                    >
-                      Interface Details
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    </a>
-                  </div> */}
                 </div>
-
               </div>
             ))}
           </div>

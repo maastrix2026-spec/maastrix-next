@@ -61,7 +61,7 @@ export default function ServiceHero() {
 
                         {/* Service-Specific Statement */}
                         <p className="text-sm sm:text-base text-gray-400 max-w-xl leading-relaxed font-medium">
-                            We engineer custom, highly resilient digital architecture. From high-concurrency Node.js API layers and optimized database schemas to responsive cross-platform mobile environments, we build frameworks meant to scale seamlessly.
+                           We design and build secure, high-performance backend platforms and cross-platform mobile applications that power modern digital businesses. From scalable APIs and cloud-native infrastructure to enterprise integrations and AI-ready architectures, our solutions are engineered for reliability, security, and long-term growth.
                         </p>
 
                         {/* High-Contrast Action Button (Positioned like 'Let's Code' in image_68f779.jpg) */}

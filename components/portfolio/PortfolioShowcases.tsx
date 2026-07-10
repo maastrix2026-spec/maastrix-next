@@ -37,13 +37,13 @@ export default function PortfolioShowcase() {
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.1]">
-              Proven Deployments. <br />
+              Delivering Innovation.<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Global Infrastructure.
+                Building Digital Success.
               </span>
             </h2>
             <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed max-w-xl">
-              Explore our verified portfolio of robust backend architectures, low-latency mobile platforms, and high-velocity developer tools shipped worldwide.
+              Explore our portfolio of AI-powered applications, enterprise software, ecommerce platforms, CRM solutions, and custom digital products engineered to solve complex business challenges and deliver measurable business outcomes.
             </p>
           </div>
 
