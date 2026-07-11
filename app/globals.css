@@ -303,3 +303,178 @@
 
 
 @keyframes client-marquee-scroll { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } } .client-marquee { animation: client-marquee-scroll 38s linear infinite; will-change: transform; transform: translate3d(0, 0, 0); backface-visibility: hidden; -webkit-backface-visibility: hidden; transform-style: preserve-3d; contain: layout paint; } .client-marquee:hover { animation-play-state: paused; } @media (max-width: 640px) { .client-marquee { animation-duration: 28s; } } @media (prefers-reduced-motion: reduce) { .client-marquee { animation: none; transform: translate3d(0, 0, 0); } }
+
+
+
+/* =========================================================
+   FULL-WIDTH CLIENT MARQUEE
+========================================================= */
+
+@keyframes client-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.client-marquee-viewport {
+  position: relative;
+  overflow: hidden;
+  transition:
+    opacity 400ms ease,
+    visibility 400ms ease;
+}
+
+.client-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+
+  animation: client-marquee-scroll 90s linear infinite;
+
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  contain: layout paint style;
+}
+
+.client-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.client-logo-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s,
+    border-color 0.45s,
+    background-color 0.45s;
+}
+
+.client-logo-card:hover {
+  transform: translateY(-4px);
+}
+
+.client-logo-card:hover {
+  transform: translate3d(0, -3px, 0);
+  border-color: rgb(37 99 235 / 0.25);
+  background: rgb(255 255 255);
+  box-shadow: 0 12px 30px rgb(15 23 42 / 0.08);
+}
+
+/*
+ * Pause only on devices that actually support hover.
+ * This avoids sticky hover states on touchscreens.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .client-marquee-viewport:hover .client-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (hover: hover) {
+  .client-marquee-viewport:hover .client-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Small phones */
+@media (max-width: 479px) {
+  .client-marquee-track {
+    animation-duration: 40s;
+  }
+
+  .client-marquee-group {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+
+  .client-logo-card {
+    min-width: 7rem;
+    height: 4rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.75rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .client-marquee-track {
+    animation-duration: 55s;
+  }
+}
+
+/* Tablets */
+@media (min-width: 640px) {
+  .client-marquee-group {
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+
+  .client-logo-card {
+    min-width: 9rem;
+    height: 5rem;
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .client-marquee-track {
+    animation-duration: 70s;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .client-marquee-track {
+    animation-duration: 70s;
+  }
+
+  .client-marquee-group {
+    gap: 3rem;
+    padding-right: 3rem;
+  }
+
+  .client-logo-card {
+    min-width: 11rem;
+    height: 5.5rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .client-marquee-track {
+    animation-duration: 90s;
+  }
+}
+
+@media (min-width: 1536px) {
+  .client-marquee-track {
+    animation-duration: 110s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee-viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .client-marquee-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .client-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
