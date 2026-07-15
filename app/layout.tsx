@@ -7,6 +7,7 @@ import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
 import ScrollToTop from "@/components/ScrollToTop";
 import { cn } from "@/lib/utils";
+import ScrollToTopOnMount from "@/components/ScrollToTopOnMount";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -20,7 +21,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-   metadataBase: new URL("https://www.maastrixsolutions.com"),
+  metadataBase: new URL("https://www.maastrixsolutions.com"),
   title: "Maastrix Solutions - Enterprise AI & Digital Transformation",
   description: "Web application and IT solutions provider with over 22 years of expertise.",
   verification: {
@@ -47,6 +48,7 @@ export default function RootLayout({
       )}
     >
       <body>
+        <ScrollToTopOnMount />
         {children}
 
         <CookieConsent />
