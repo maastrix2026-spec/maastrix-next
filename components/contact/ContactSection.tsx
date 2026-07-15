@@ -1,5 +1,5 @@
 "use client";
-
+import { Turnstile } from '@marsidev/react-turnstile';
 import React, { useState } from "react";
 import {
   AlertCircle,
@@ -43,22 +43,22 @@ const inquiryCategories: Array<{
   label: string;
   description: string;
 }> = [
-  {
-    id: "project",
-    label: "Launch Project",
-    description: "Hire our core development team",
-  },
-  {
-    id: "career",
-    label: "Join Team / Career",
-    description: "Connect with our HR team",
-  },
-  {
-    id: "general",
-    label: "General Inquiry",
-    description: "Consultation and strategy",
-  },
-];
+    {
+      id: "project",
+      label: "Launch Project",
+      description: "Hire our core development team",
+    },
+    {
+      id: "career",
+      label: "Join Team / Career",
+      description: "Connect with our HR team",
+    },
+    {
+      id: "general",
+      label: "General Inquiry",
+      description: "Consultation and strategy",
+    },
+  ];
 
 const inputClassName =
   "w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3.5 text-base text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-slate-300 focus:border-blue-600 focus:bg-white focus:ring-4 focus:ring-blue-600/10 sm:text-sm";
@@ -67,7 +67,7 @@ export default function ContactSection() {
   const [formState, setFormState] =
     useState<ContactFormState>(INITIAL_FORM_STATE);
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
-
+  const [token, setToken] = useState<string>("");
   const updateFormField = <K extends keyof ContactFormState>(
     field: K,
     value: ContactFormState[K],
@@ -81,6 +81,11 @@ export default function ContactSection() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!token) {
+      alert("Please complete the verification challenge.");
+      return;
+    }
 
     if (formStatus === "submitting") return;
 
@@ -96,7 +101,7 @@ export default function ContactSection() {
           phone: formState.phone,
           address: formState.address,
           message: formState.message,
-        });
+        }, token);
       } else if (formState.category === "project") {
         result = await sendQuoteMailAction({
           name: formState.name,
@@ -249,11 +254,10 @@ export default function ContactSection() {
             <div
               role="status"
               aria-live="polite"
-              className={`absolute inset-0 z-20 flex flex-col items-center justify-center rounded-2xl bg-white/95 p-6 text-center backdrop-blur-sm transition-all duration-500 sm:p-8 ${
-                formStatus === "success"
-                  ? "visible scale-100 opacity-100"
-                  : "invisible pointer-events-none scale-95 opacity-0"
-              }`}
+              className={`absolute inset-0 z-20 flex flex-col items-center justify-center rounded-2xl bg-white/95 p-6 text-center backdrop-blur-sm transition-all duration-500 sm:p-8 ${formStatus === "success"
+                ? "visible scale-100 opacity-100"
+                : "invisible pointer-events-none scale-95 opacity-0"
+                }`}
             >
               <div className="mb-4 rounded-full bg-emerald-50 p-3 text-emerald-500">
                 <CheckCircle2 className="h-8 w-8" aria-hidden="true" />
@@ -283,16 +287,14 @@ export default function ContactSection() {
                         type="button"
                         aria-pressed={isSelected}
                         onClick={() => updateFormField("category", category.id)}
-                        className={`min-h-[88px] rounded-xl border p-4 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 ${
-                          isSelected
-                            ? "border-blue-600 bg-blue-50/70 ring-2 ring-blue-600/15"
-                            : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm"
-                        }`}
+                        className={`min-h-[88px] rounded-xl border p-4 text-left transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-600/15 ${isSelected
+                          ? "border-blue-600 bg-blue-50/70 ring-2 ring-blue-600/15"
+                          : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm"
+                          }`}
                       >
                         <span
-                          className={`block text-sm font-bold md:text-xs xl:text-sm ${
-                            isSelected ? "text-blue-600" : "text-slate-800"
-                          }`}
+                          className={`block text-sm font-bold md:text-xs xl:text-sm ${isSelected ? "text-blue-600" : "text-slate-800"
+                            }`}
                         >
                           {category.label}
                         </span>
@@ -452,6 +454,11 @@ export default function ContactSection() {
                   </span>
                 </div>
               )}
+
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={(token) => setToken(token)}
+              />
 
               <button
                 type="submit"
