@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import { Send, CheckCircle, ShieldCheck, AlertCircle, Building2, Globe2 } from "lucide-react";
 import { sendQuoteMailAction } from "@/actions/sendQuoteMailAction";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export default function QuoteForm() {
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [token, setToken] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export default function QuoteForm() {
     };
 
     try {
-      const result = await sendQuoteMailAction(payload);
+      const result = await sendQuoteMailAction(payload, token);
 
       if (result.success) {
         setFormStatus("success");
@@ -168,6 +170,17 @@ export default function QuoteForm() {
               <span>Transmission failure. Verify network connection metrics or contact support directly.</span>
             </div>
           )}
+
+          <div className="flex w-full justify-center sm:justify-start">
+            <Turnstile
+              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+              onSuccess={(token) => setToken(token)}
+              options={{
+                theme: 'light',
+                size: 'normal',
+              }}
+            />
+          </div>
 
           {/* Submit Action Interface */}
           <div className="pt-2">
