@@ -88,7 +88,6 @@ export default function ContactSection() {
     }
 
     if (formStatus === "submitting") return;
-
     setFormStatus("submitting");
 
     try {
@@ -110,7 +109,7 @@ export default function ContactSection() {
           address: formState.address,
           message: formState.message,
           preferredContact: formState.preferredContact,
-        });
+        }, token);
       } else {
         result = await sendContactMailAction({
           name: formState.name,
@@ -119,7 +118,7 @@ export default function ContactSection() {
           address: formState.address,
           message: formState.message,
           preferredContact: formState.preferredContact,
-        });
+        }, token);
       }
 
       if (result.success) {
@@ -455,10 +454,16 @@ export default function ContactSection() {
                 </div>
               )}
 
-              <Turnstile
-                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                onSuccess={(token) => setToken(token)}
-              />
+              <div className="flex w-full justify-center sm:justify-start">
+                <Turnstile
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                  onSuccess={(token) => setToken(token)}
+                  options={{
+                    theme: 'light',
+                    size: 'normal',
+                  }}
+                />
+              </div>
 
               <button
                 type="submit"
