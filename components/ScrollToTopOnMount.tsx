@@ -4,10 +4,14 @@ import { useEffect } from "react";
 
 export default function ScrollToTopOnMount() {
   useEffect(() => {
-    // This forces the window to scroll to the top immediately 
-    // after the browser has finished loading the page.
+    // Disable the browser's default scroll restoration behavior
     window.history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
+
+    // Trigger smooth scroll to the top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, []);
 
   return null;

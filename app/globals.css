@@ -478,3 +478,8 @@
     transform: none;
   }
 }
+
+/* In your globals.css */
+html {
+  scroll-behavior: smooth;
+}
