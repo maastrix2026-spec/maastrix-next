@@ -11,9 +11,7 @@ export async function sendCareerMailAction(data: CareerMailPayload) {
         message: "Name and email are required.",
       };
     }
-
     await sendCareerMail(data);
-
     return {
       success: true,
       message: "Career application sent successfully.",
