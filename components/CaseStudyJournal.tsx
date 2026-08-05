@@ -4,6 +4,13 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Calendar, User, Sparkles, Terminal } from "lucide-react";
 import { featuredWork, ProjectCard } from "@/data/caseStudies";
+import { cn } from "@/lib/utils";
+import dynamic from "next/dynamic";
+
+const HexagonPattern = dynamic(
+  () => import("@/components/ui/hexagon-pattern").then((mod) => mod.HexagonPattern),
+  { ssr: false }
+);
 
 export default function CaseStudyJournal() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,19 +32,42 @@ export default function CaseStudyJournal() {
       className="relative w-full bg-[#f8fafc] text-slate-900 py-20 overflow-hidden border-t border-slate-200"
       style={{ "--scroll-y": "0" } as React.CSSProperties}
     >
-
       {/* Hydration-Safe Light Technical Ambient Glow Fields */}
       <div
-        className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[130px] pointer-events-none will-change-transform"
+        className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-blue-500/[0.04] rounded-full blur-[130px] pointer-events-none will-change-transform z-0"
         style={{ transform: "translate3d(0, calc(var(--scroll-y) * 0.06px), 0)" }}
       />
       <div
-        className="absolute bottom-[5%] left-[-5%] w-[450px] h-[450px] bg-indigo-500/[0.04] rounded-full blur-[120px] pointer-events-none will-change-transform"
+        className="absolute bottom-[5%] left-[-5%] w-[450px] h-[450px] bg-indigo-500/[0.04] rounded-full blur-[120px] pointer-events-none will-change-transform z-0"
         style={{ transform: "translate3d(0, calc(var(--scroll-y) * -0.04px), 0)" }}
       />
 
+      {/* Hexagon Pattern Background Layer - Styled for light theme visibility */}
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+        <HexagonPattern
+          hexagons={[
+            [1, 1],
+            [4, 4],
+            [2, 2],
+            [3, 4],
+            [5, 4],
+            [8, 2],
+            [6, 3],
+            [8, 5],
+            [10, 10],
+          ]}
+          radius={40}
+          x={-1}
+          y={-1}
+          className={cn(
+            "stroke-slate-900/[0.07]",
+            "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_30%,transparent_100%)]",
+          )}
+        />
+      </div>
+
       {/* Blueprint Structural Mesh Screen */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a02_1px,transparent_1px),linear-gradient(to_bottom,#0f172a02_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a02_1px,transparent_1px),linear-gradient(to_bottom,#0f172a02_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none z-0" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full z-10">
 

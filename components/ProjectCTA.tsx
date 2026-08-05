@@ -3,6 +3,8 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Terminal, Layers } from "lucide-react";
+import { ShinyButton } from "@/components/ui/shiny-button"
+
 
 export default function ProjectCTA() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -11,7 +13,7 @@ export default function ProjectCTA() {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const currentScroll = window.scrollY;
-      
+
       // Calculate a slower scroll rate to subtly drift the background image
       sectionRef.current.style.setProperty("--bg-parallax", `${currentScroll * 0.12}px`);
     };
@@ -29,17 +31,17 @@ export default function ProjectCTA() {
       {/* =========================================================================
           BACKGROUND IMAGERY & TECHNICAL GRID LAYERS
           ========================================================================= */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity pointer-events-none transition-transform duration-100 ease-out scale-105 will-change-transform"
-        style={{ 
+        style={{
           backgroundImage: "url('/assets/images/backgrounds/corporate-building.jpg')",
           transform: "translate3d(0, var(--bg-parallax), 0) scale(1.05)"
         }}
       />
-      
+
       {/* Absolute Radial Gradient Overlay to darken edges for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#090b0e] via-[#090b0e]/80 to-[#090b0e] z-0" />
-      
+
       {/* Subtle Blue Accent Glow */}
       <div className="absolute bottom-[-20%] left-[30%] w-[500px] h-[300px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0" />
 
@@ -47,7 +49,7 @@ export default function ProjectCTA() {
           CONTENT PRESENTATION LAYER
           ========================================================================= */}
       <div className="relative mx-auto max-w-5xl px-6 lg:px-8 text-center z-10 space-y-8">
-        
+
         {/* Decorative Badge Element */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
           <Layers className="h-3.5 w-3.5 text-blue-400" />
@@ -64,7 +66,7 @@ export default function ProjectCTA() {
               Let’s Architect It Together.
             </span>
           </h2>
-          
+
           <p className="text-sm sm:text-base text-gray-400 font-medium leading-relaxed max-w-2xl mx-auto">
             Whether you need to configure context-aware RAG pipelines, deploy low-latency OCR technologies, or secure critical business data nodes with multi-factor middleware layers, our specialized core development squads are ready to deliver.
           </p>
@@ -72,14 +74,13 @@ export default function ProjectCTA() {
 
         {/* High-Contrast Conversion Action Panel */}
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/get-a-quote"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white hover:bg-blue-600 text-slate-950 hover:text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-lg hover:shadow-blue-600/20 transition-all duration-300 group shrink-0"
-          >
-            Get a Quote
-            <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-white transition-colors duration-200" />
-          </Link>
-          
+          <ShinyButton>
+            <span className="whitespace-pre-wrap text-center text-xs font-black uppercase tracking-widest leading-none text-white dark:text-white">
+              Get a quote
+            </span>
+          </ShinyButton>
+          <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-white transition-colors duration-200" />
+
           <div className="flex items-center gap-2 text-sm font-bold text-gray-500 tracking-wide">
             <Terminal className="h-4 w-4 text-emerald-500" />
             <span>Direct pipeline assignment within 24 hours</span>

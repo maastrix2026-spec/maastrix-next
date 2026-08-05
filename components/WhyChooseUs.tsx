@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import { ShieldCheck, Cpu, Layers, Zap, ArrowRight, CheckCircle2, Award, Users2, Building2 } from "lucide-react";
+import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
 
 interface FeatureCard {
   icon: React.ReactNode;
@@ -17,6 +19,11 @@ interface MetricItem {
   icon: React.ReactNode;
 }
 
+const HexagonPattern = dynamic(
+  () => import("@/components/ui/hexagon-pattern").then((mod) => mod.HexagonPattern),
+  { ssr: false }
+);
+
 export default function WhyChooseUs() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +32,7 @@ export default function WhyChooseUs() {
       if (!sectionRef.current) return;
       sectionRef.current.style.setProperty("--scroll-top", `${window.scrollY}`);
     };
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -64,17 +71,41 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative w-full bg-slate-50 text-slate-900 py-20 lg:py-28 overflow-hidden border-y border-slate-200"
       style={{ "--scroll-top": "0" } as React.CSSProperties}
     >
+
+      <div className="absolute inset-0 pointer-events-none z-0 flex items-center justify-center overflow-hidden">
+        <HexagonPattern
+          radius={40}
+          x={-1}
+          y={-1}
+          hexagons={[
+            [1, 1],
+            [4, 4],
+            [2, 2],
+            [3, 4],
+            [5, 4],
+            [8, 2],
+            [6, 3],
+            [8, 5],
+            [10, 10],
+          ]}
+          className={cn(
+            "stroke-slate-900/3", // Reduced opacity for subtle integration
+            "mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,#000_30%,transparent_100%)]", // Smooth edge collapse
+           
+          )}
+        />
+      </div>
       {/* Premium Subdued Technical Geometric Grid Matrix */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0284c703_1px,transparent_1px),linear-gradient(to_bottom,#0284c703_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
-          
+
           {/* =========================================================================
               LEFT BLOCK: STRATEGIC INTENT & CORPORATE METRICS (Sticky Contextual Column)
               ========================================================================= */}
@@ -86,14 +117,14 @@ export default function WhyChooseUs() {
                   Global Engineering Matrix
                 </span>
               </div>
-              
+
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.1]">
                 Engineered to Drive <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                   Software Velocity.
                 </span>
               </h2>
-              
+
               <p className="text-sm text-slate-800 leading-relaxed font-medium max-w-lg">
                 We equip global organizations with elite backend and full-stack engineering power. By eliminating typical non-technical agency layers, our teams interface directly on code infrastructure to maximize reliability and data throughput.
               </p>
@@ -102,7 +133,7 @@ export default function WhyChooseUs() {
             {/* Premium Embedded Corporate Metric Blocks */}
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3.5 pt-2">
               {metrics.map((metric, idx) => (
-                <div 
+                <div
                   key={idx}
                   className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.01)] hover:border-slate-300 transition-colors duration-200"
                 >
@@ -121,8 +152,8 @@ export default function WhyChooseUs() {
             </div>
 
             <div className="pt-2">
-              <a 
-                href="/get-a-quote" 
+              <a
+                href="/get-a-quote"
                 className="inline-flex items-center gap-2.5 px-6 py-3 bg-slate-950 hover:bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-md transition-all duration-300 group"
               >
                 Initiate Architecture Briefing
@@ -136,7 +167,7 @@ export default function WhyChooseUs() {
               ========================================================================= */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
             {features.map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="relative p-6 bg-white border border-slate-200/80 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-xl transition-all duration-300 hover:bg-[#090b0e] hover:border-[#090b0e] group flex flex-col justify-between overflow-hidden"
               >
@@ -148,7 +179,7 @@ export default function WhyChooseUs() {
                   <div className="inline-flex p-2.5 rounded-xl bg-slate-50 text-slate-700 border border-slate-100 transition-all duration-300 group-hover:bg-white group-hover:text-slate-950 group-hover:border-white group-hover:scale-105 shadow-sm">
                     {item.icon}
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h3 className="text-base font-black tracking-tight text-slate-950 group-hover:text-white transition-colors duration-200">
                       {item.title}
