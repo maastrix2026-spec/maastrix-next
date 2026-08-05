@@ -3,10 +3,18 @@
 import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
 import { clientLogos } from "../../data/clients";
+import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
+
+const GlyphMatrix = dynamic(
+  () => import("@/components/ui/glyph-matrix").then((mod) => mod.GlyphMatrix),
+  { ssr: false }
+);
 
 export default function ClientSlider() {
   const [loadedCount, setLoadedCount] = useState(0);
-
+  const { resolvedTheme } = useTheme();
+  const [color, setColor] = useState("#6B7280");
   /*
    * Repeat logos inside each group so the marquee remains wider
    * than ultrawide screens. Both groups remain exactly identical.
@@ -33,8 +41,20 @@ export default function ClientSlider() {
       aria-labelledby="client-slider-heading"
       className="relative w-full overflow-hidden border-y border-slate-200 bg-white py-10 sm:py-12 lg:py-14"
     >
+
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-30">
+        <GlyphMatrix
+          glyphs="01·•+*/\<>="
+          cellSize={14}
+          mutationRate={0.04}
+          interval={90}
+          fadeBottom={0.6}
+          color={color}
+        />
+      </div>
+
       {/* Background decoration */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 z-1">
         <div className="absolute left-1/4 top-0 h-48 w-48 rounded-full bg-blue-500/[0.04] blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-indigo-500/[0.04] blur-3xl" />
       </div>

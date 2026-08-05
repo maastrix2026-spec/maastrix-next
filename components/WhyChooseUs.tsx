@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { ShieldCheck, Cpu, Layers, Zap, ArrowRight, CheckCircle2, Award, Users2, Building2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
+import { ShimmerButton } from "./ui/shimmer-button";
 
 interface FeatureCard {
   icon: React.ReactNode;
@@ -91,12 +92,12 @@ export default function WhyChooseUs() {
             [8, 2],
             [6, 3],
             [8, 5],
-            [10, 10],
+            [10, 150],
           ]}
           className={cn(
             "stroke-slate-900/3", // Reduced opacity for subtle integration
             "mask-[radial-gradient(ellipse_60%_60%_at_50%_50%,#000_30%,transparent_100%)]", // Smooth edge collapse
-           
+
           )}
         />
       </div>
@@ -152,13 +153,15 @@ export default function WhyChooseUs() {
             </div>
 
             <div className="pt-2">
-              <a
-                href="/get-a-quote"
-                className="inline-flex items-center gap-2.5 px-6 py-3 bg-slate-950 hover:bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-md transition-all duration-300 group"
-              >
-                Initiate Architecture Briefing
-                <ArrowRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" />
-              </a>
+              <ShimmerButton>
+                <a
+                  href="/get-a-quote"
+                  className="inline-flex items-center gap-2.5 px-6 py-2 bg-slate-950 hover:bg-blue-600 text-white text-xs font-black uppercase tracking-widest rounded-xl shadow-md transition-all duration-300 group"
+                >
+                  Initiate Architecture Briefing
+                  <ArrowRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" />
+                </a>
+              </ShimmerButton>
             </div>
           </div>
 

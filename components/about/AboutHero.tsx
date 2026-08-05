@@ -3,28 +3,42 @@
 import React from "react";
 import Image from "next/image";
 import { Play, Sparkles, ShieldCheck } from "lucide-react";
+import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
+
+const InteractiveGridPattern = dynamic(
+  () => import("@/components/ui/interactive-grid-pattern").then((mod) => mod.InteractiveGridPattern),
+  { ssr: false }
+);
 
 export default function AboutHero() {
   return (
     <section className="relative min-h-screen bg-[#0d0f12] text-white font-sans overflow-hidden pt-30 pb-20 lg:pt-32 lg:pb-28">
-      
+
       {/* PURE PARALLAX LAYER ENGINE */}
-      {/* Creates ambient, immersive organic depths as the user scrolls */}
-      <div className="absolute top-[-10%] right-[-10%] w-[50rem] h-[50rem] bg-gradient-to-bl from-blue-600/10 via-transparent to-transparent rounded-full blur-[140px] opacity-70 bg-fixed pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] left-[-15%] w-[45rem] h-[45rem] bg-gradient-to-tr from-white/5 via-transparent to-transparent rounded-full blur-[120px] opacity-40 bg-fixed pointer-events-none z-0" />
+      <div className="absolute top-[-10%] right-[-10%] w-200 h-200 bg-linear-to-bl from-blue-600/10 via-transparent to-transparent rounded-full blur-[140px] opacity-70 bg-fixed pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] left-[-15%] w-180 h-180 bg-linear-to-tr from-white/5 via-transparent to-transparent rounded-full blur-[120px] opacity-40 bg-fixed pointer-events-none z-0" />
+
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-auto">
+        <InteractiveGridPattern
+          className={cn(
+            "mask-[radial-gradient(500px_circle_at_center,white,transparent)]",
+            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+          )}
+        />
+      </div>
 
       {/* Decorative Blueprint Matrix Overlay Grid */}
-      <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:32px_32px] pointer-events-none" />
-
+      <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[32px_32px] pointer-events-none z-0" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-        
+
         {/* TOP BLOCK: TYPOGRAPHY HEADER MATCHING WORLD-CLASS ENTERPRISE THEMES */}
         <div className="max-w-5xl mb-16 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
             <Sparkles className="h-3.5 w-3.5 text-blue-400" />
             <span className="text-[10px] font-bold uppercase tracking-widest text-gray-300">Global IT &amp; Web Solutions Leader</span>
           </div>
-          
+
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.15]">
             Empowering Global Enterprises Since <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">2004</span> With Cutting-Edge Engineering.
           </h1>
@@ -32,12 +46,12 @@ export default function AboutHero() {
 
         {/* BOTTOM BLOCK: THREE-COLUMN OFFSET LAYOUT FORMULATION */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-end">
-          
+
           {/* Card 1: Left Contextual Image Frame */}
           <div className="md:col-span-4 group relative">
             <div className="relative aspect-[4/5] sm:aspect-[1/1] md:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/10">
               <Image
-                src="/assets/images/about/quad1.jpg" 
+                src="/assets/images/about/quad1.jpg"
                 alt="Maastrix Agile Engineering Workspace"
                 fill
                 sizes="(max-w-7xl) 33vw, 100vw"
@@ -45,7 +59,7 @@ export default function AboutHero() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f12]/70 via-transparent to-transparent" />
-              
+
               {/* Dynamic Overlay Floating Metadata tag */}
               <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/5 border border-white/10 p-4 rounded-xl">
                 <p className="text-[11px] font-bold tracking-wider text-blue-400 uppercase">Global Footprint</p>
@@ -58,7 +72,7 @@ export default function AboutHero() {
           <div className="md:col-span-4 group relative md:-mb-12">
             <div className="relative aspect-[4/5] sm:aspect-[1/1] md:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-blue-500/10 border-4 border-[#0d0f12]">
               <Image
-                src="/assets/images/about/quad2.jpg" 
+                src="/assets/images/about/quad2.jpg"
                 alt="Collaborative Solutions Framework Architectural Setup"
                 fill
                 sizes="(max-w-7xl) 33vw, 100vw"
@@ -66,7 +80,7 @@ export default function AboutHero() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f12]/70 via-transparent to-transparent" />
-              
+
               {/* Strategic Corporate Alliance Indicator */}
               <div className="absolute top-6 right-6 bg-blue-600/90 text-white rounded-full p-2.5 shadow-lg backdrop-blur-sm">
                 <ShieldCheck className="h-5 w-5" />

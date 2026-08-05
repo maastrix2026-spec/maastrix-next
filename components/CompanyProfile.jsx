@@ -1,14 +1,37 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { CheckCheck } from "lucide-react";
+import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
+
+const AnimatedGridPattern = dynamic(
+  () => import("@/components/ui/animated-grid-pattern").then((mod) => mod.AnimatedGridPattern),
+  { ssr: false }
+);
 
 export default function CompanyProfile() {
   return (
     <section
       id="about"
-      className="py-20 md:py-28 bg-white text-slate-900 font-sans"
+      className="relative py-20 md:py-28 bg-white text-slate-900 font-sans overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Animated Grid Pattern Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+        <AnimatedGridPattern
+          numSquares={70}
+          maxOpacity={0.01}
+          duration={3}
+          repeatDelay={1}
+          className={cn(
+            "mask-[radial-gradient(700px_circle_at_center,white,transparent)]",
+            "absolute inset-0 h-full w-full skew-y-12"
+          )}
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
         {/* 1. REMOVED lg:items-start so both columns stretch to equal height */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           
