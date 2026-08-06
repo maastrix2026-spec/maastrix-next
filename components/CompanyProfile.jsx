@@ -17,28 +17,44 @@ export default function CompanyProfile() {
       id="about"
       className="relative py-20 md:py-28 bg-white text-slate-900 font-sans overflow-hidden"
     >
-      {/* Animated Grid Pattern Background Layer - Anchored to Top Right */}
-      <div className="absolute top-0 right-0 w-full lg:w-3/4 h-full z-0 pointer-events-none flex items-start justify-end overflow-hidden">
+      {/* 3D PERSPECTIVE AMBIENT DEPTH LAYERS */}
+      <div className="absolute top-0 right-0 w-[35rem] h-[35rem] bg-gradient-to-bl from-blue-500/10 via-cyan-500/5 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[35rem] h-[35rem] bg-gradient-to-tr from-indigo-500/10 via-blue-500/5 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
+
+      {/* 1. TOP-RIGHT CORNER ANIMATED GRID PATTERN */}
+      <div className="absolute -top-24 -right-24 w-[55%] h-[55%] z-0 pointer-events-none overflow-hidden opacity-70">
         <AnimatedGridPattern
-          numSquares={50}
-          maxOpacity={0.08}
+          numSquares={40}
+          maxOpacity={0.15}
           duration={3}
           repeatDelay={1}
           className={cn(
-            // Focuses the fade mask on the top-right corner
-            "[mask-image:radial-gradient(600px_circle_at_85%_15%,white,transparent)]",
-            // Adds a modern 3D perspective skew and rotation tilt
-            "absolute inset-0 h-full w-full transform-gpu perspective-1000 rotate-[-6deg] skew-x-6 scale-110"
+            "[mask-image:radial-gradient(ellipse_at_top_right,#000_20%,transparent_80%)]",
+            "absolute inset-0 h-full w-full skew-x-[-12deg] skew-y-12 scale-110"
+          )}
+        />
+      </div>
+
+      {/* 2. BOTTOM-LEFT CORNER ANIMATED GRID PATTERN */}
+      <div className="absolute -bottom-24 -left-24 w-[55%] h-[55%] z-0 pointer-events-none overflow-hidden opacity-70">
+        <AnimatedGridPattern
+          numSquares={40}
+          maxOpacity={0.12}
+          duration={4}
+          repeatDelay={1.5}
+          className={cn(
+            "[mask-image:radial-gradient(ellipse_at_bottom_left,#000_20%,transparent_80%)]",
+            "absolute inset-0 h-full w-full skew-x-[12deg] skew-y-[-12deg] scale-110"
           )}
         />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
           
           {/* Left Column: Copywriting & Value Propositions */}
           <div className="flex flex-col justify-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-2">
               Company Profile
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
@@ -92,8 +108,8 @@ export default function CompanyProfile() {
             </p>
           </div>
 
-          {/* Right Column: Image Frame */}
-          <div className="relative overflow-hidden rounded-lg shadow-xl w-full h-[300px] sm:h-[400px] lg:h-full lg:min-h-[500px]">
+          {/* Right Column: 3D Tilt/Shadow Image Frame */}
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl shadow-blue-500/10 border border-slate-100 w-full h-[300px] sm:h-[400px] lg:h-full lg:min-h-[500px] transition-transform duration-500 hover:scale-[1.01]">
             <Image
               src="/assets/images/about.jpg"
               alt="About Maastrix Solutions"

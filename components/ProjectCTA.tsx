@@ -62,7 +62,7 @@ export default function ProjectCTA() {
         <div className="space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
             Have a Complex System to Scale? <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-red-200 to-blue-400">
               Let’s Architect It Together.
             </span>
           </h2>

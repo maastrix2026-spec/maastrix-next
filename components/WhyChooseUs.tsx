@@ -121,7 +121,7 @@ export default function WhyChooseUs() {
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-950 leading-[1.1]">
                 Engineered to Drive <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-indigo-300">
                   Software Velocity.
                 </span>
               </h2>
