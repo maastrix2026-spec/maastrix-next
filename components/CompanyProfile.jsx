@@ -17,22 +17,23 @@ export default function CompanyProfile() {
       id="about"
       className="relative py-20 md:py-28 bg-white text-slate-900 font-sans overflow-hidden"
     >
-      {/* Animated Grid Pattern Background Layer */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+      {/* Animated Grid Pattern Background Layer - Anchored to Top Right */}
+      <div className="absolute top-0 right-0 w-full lg:w-3/4 h-full z-0 pointer-events-none flex items-start justify-end overflow-hidden">
         <AnimatedGridPattern
-          numSquares={70}
-          maxOpacity={0.01}
+          numSquares={50}
+          maxOpacity={0.08}
           duration={3}
           repeatDelay={1}
           className={cn(
-            "mask-[radial-gradient(700px_circle_at_center,white,transparent)]",
-            "absolute inset-0 h-full w-full skew-y-12"
+            // Focuses the fade mask on the top-right corner
+            "[mask-image:radial-gradient(600px_circle_at_85%_15%,white,transparent)]",
+            // Adds a modern 3D perspective skew and rotation tilt
+            "absolute inset-0 h-full w-full transform-gpu perspective-1000 rotate-[-6deg] skew-x-6 scale-110"
           )}
         />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8 z-10">
-        {/* 1. REMOVED lg:items-start so both columns stretch to equal height */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           
           {/* Left Column: Copywriting & Value Propositions */}
@@ -91,9 +92,8 @@ export default function CompanyProfile() {
             </p>
           </div>
 
-          {/* 2. UPDATED WRAPPER: Added lg:h-full so it matches the text height on desktop */}
+          {/* Right Column: Image Frame */}
           <div className="relative overflow-hidden rounded-lg shadow-xl w-full h-[300px] sm:h-[400px] lg:h-full lg:min-h-[500px]">
-            {/* 3. UPDATED IMAGE: Used `fill` and `object-cover` instead of hardcoded sizes */}
             <Image
               src="/assets/images/about.jpg"
               alt="About Maastrix Solutions"
