@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Monitor, Cpu, Layers, Smartphone, GlobeCheck, BrainCircuit } from 'lucide-react';
-import { KineticText } from '../ui/kinetic-text';
 
 const HeroSection = () => {
   const features = [
@@ -22,23 +21,12 @@ const HeroSection = () => {
       }}
     >
       {/* Hero Text Section */}
-      <div className="grow flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto relative z-10 pb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] max-w-4xl text-white">
+      <div className="flex-grow flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto relative z-10 pb-12">
+        {/* Adjusted text sizing to be responsive */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] max-w-4xl">
           Powerful IT & Web <br className="hidden sm:block" /> 
-          Application{" "}
-          
-          {/* 3D Perspective Container with letter spacing tracking */}
-          <span className="inline-block text-blue-500 [perspective:1000px] drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)] filter">
-            <div className="transform transition-transform duration-300 hover:rotate-x-6 hover:rotate-y-6">
-              <KineticText
-                text="Solutions"
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-widest bg-linear-to-b from-blue-300 via-blue-500 to-blue-700 bg-clip-text text-transparent [text-shadow:_0_4px_12px_rgba(59,130,246,0.6)]"
-              />
-            </div>
-          </span>
-          .
+          Application <span className="text-blue-500">Solutions</span>.
         </h1>
-
         <p className="mt-6 text-sm sm:text-base md:text-lg text-gray-300 max-w-xl font-medium tracking-wide">
           Empowering global enterprises for over 22 years with cutting-edge software engineering and digital transformation.
         </p>
@@ -46,6 +34,7 @@ const HeroSection = () => {
 
       {/* Responsive Feature Grid */}
       <div className="w-full border-t border-white/10 bg-black/20 backdrop-blur-sm relative z-10">
+        {/* Changed grid-cols-2 to sm:grid-cols-3 lg:grid-cols-6 */}
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0">
           {features.map((feature, index) => (
             <div
@@ -58,6 +47,7 @@ const HeroSection = () => {
                 {feature.icon}
               </div>
 
+              {/* Smaller text on mobile, larger on desktop */}
               <h2 className="text-[10px] sm:text-xs font-bold tracking-wide text-gray-200 group-hover:text-blue-400 z-10 uppercase sm:normal-case">
                 {feature.title}
               </h2>
