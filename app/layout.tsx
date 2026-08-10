@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.maastrixsolutions.com"),
   title: "Maastrix Solutions - Enterprise AI & Digital Transformation",
   description: "Web application and IT solutions provider with over 22 years of expertise.",
+  keywords: ["Custom Software Development", "Enterprise AI", "IT Solutions", "SaaS Platforms", "Web Development", "Application development"],
   verification: {
     google: "B4opya_l3cwAg7nlikVPDONDkxyH1oULJFwUbc2J5TY",
   },
