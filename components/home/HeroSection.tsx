@@ -24,9 +24,13 @@ const HeroSection = () => {
       <div className="flex-grow flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto relative z-10 pb-12">
         {/* Adjusted text sizing to be responsive */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] max-w-4xl">
-          Powerful IT & Web <br className="hidden sm:block" /> 
+          Powerful IT & Web <br className="hidden sm:block" />
           Application <span className="text-blue-500">Solutions</span>.
         </h1>
+
+        <p className="sr-only">
+          Maastrix Solutions provides custom software development, enterprise AI integration, cloud engineering, SaaS platforms, and digital transformation services.
+        </p>
         <p className="mt-6 text-sm sm:text-base md:text-lg text-gray-300 max-w-xl font-medium tracking-wide">
           Empowering global enterprises for over 22 years with cutting-edge software engineering and digital transformation.
         </p>

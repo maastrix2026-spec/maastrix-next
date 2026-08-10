@@ -20,7 +20,21 @@ export const metadata: Metadata = {
     "Custom CMS Solutions",
     "SEO optimisation",
     "Web Development",
-    "Mobile Application Development"
+    "Mobile Application Development",
+    "custom website development company in the USA",
+    "ecommerce website development agency in the UK",
+    "mobile app development services in the UK",
+    "professional digital marketing company in Bhubaneswar, India",
+    "local SEO services in India for service-based businesses",
+    "responsive web design agency in the UK",
+    "custom web application development services in the USA",
+    "cross-platform mobile app developers in India",
+    "UI/UX design services in the USA for mobile apps",
+    "CMS website development company in India",
+    "best SEO service provider for small businesses",
+    "ecommerce website development in India for UK-based brands",
+    "best ecommerce development company in India with global reach",
+    "iOS app design and development for USA businesses"
   ],
   alternates: {
     canonical: "https://maastrixsolutions.com", 
